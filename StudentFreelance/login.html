@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Log in — StudentFreelance</title>
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/auth.css">
+
+  <style>
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-wrapper input {
+      width: 100%;
+      padding-right: 45px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+
+      color: var(--text-muted, #718096);
+      font-size: 16px;
+
+      padding: 6px;
+      line-height: 1;
+
+      z-index: 2;
+    }
+
+    .toggle-password:hover {
+      color: var(--blue, #2563eb);
+    }
+
+    .toggle-password:focus {
+      outline: 2px solid var(--blue, #2563eb);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .auth-error {
+      color: #c62828;
+      background: #fff5f5;
+      border: 1px solid #ffcdd2;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 12px 0;
+    }
+
+    .auth-success {
+      color: #2e7d32;
+      background: #f1f8f4;
+      border: 1px solid #c8e6c9;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 12px 0;
+    }
+
+    button:disabled,
+    input:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .btn-social {
+      position: relative;
+    }
+
+    .btn-social .google-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 6px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="auth-shell">
+
+    <!-- LEFT SIDE -->
+    <div class="auth-visual">
+
+      <a href="index.html" class="nav-logo">
+        <span class="mark">SF</span>
+        StudentFreelance
+      </a>
+
+      <div class="auth-quote">
+        <h2>Welcome back to where your skills pay off.</h2>
+
+        <p>
+          Log in to check your orders, reply to clients,
+          and keep your services running.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="auth-form-side">
+
+      <div class="auth-form-wrap">
+
+        <a href="index.html" class="nav-logo">
+          <span class="mark">SF</span>
+          StudentFreelance
+        </a>
+
+        <h1>Log in</h1>
+
+        <p>
+          New here?
+          <a
+            href="signup.html"
+            style="color:var(--blue); font-weight:600;"
+          >
+            Create an account
+          </a>
+          instead.
+        </p>
+
+
+        <!-- Google Login -->
+
+        <button
+          type="button"
+          class="btn-social"
+          id="googleLoginBtn"
+        >
+          <span class="google-icon">G</span>
+          Continue with Google
+        </button>
+
+
+        <div class="auth-divider">
+          or log in with email
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+        <form id="loginForm" novalidate>
+
+          <!-- Email -->
+
+          <div class="field">
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@university.edu.ng"
+              required
+              autocomplete="email"
+              inputmode="email"
+            >
+
+          </div>
+
+
+          <!-- Password -->
+
+          <div class="field">
+
+            <label for="password">
+              Password
+            </label>
+
+            <div class="password-wrapper">
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+                autocomplete="current-password"
+              >
+
+              <button
+                type="button"
+                id="togglePassword"
+                class="toggle-password"
+                aria-label="Show password"
+                aria-pressed="false"
+                title="Show password"
+              >
+                👁️
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- Remember + Forgot -->
+
+          <div class="field-row">
+
+            <label class="checkbox-row">
+
+              <input
+                type="checkbox"
+                id="rememberMe"
+                name="rememberMe"
+              >
+
+              Remember me
+
+            </label>
+
+            <a
+              href="forgot-password.html"
+              style="color:var(--blue); font-weight:600;"
+            >
+              Forgot password?
+            </a>
+
+          </div>
+
+
+          <!-- Submit -->
+
+          <button
+            type="submit"
+            id="loginButton"
+            class="btn btn-primary btn-block"
+          >
+            Log in
+          </button>
+
+        </form>
+
+
+        <div class="auth-switch">
+          Don't have an account?
+          <a href="signup.html">
+            Sign up for free
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FIREBASE -->
+
+  <script type="module">
+
+    /*
+     * ============================================================
+     * FIREBASE IMPORTS
+     * ============================================================
+     */
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      setPersistence,
+      browserLocalPersistence,
+      browserSessionPersistence
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+    
+
+
+    /*
+     * ============================================================
+     * FIREBASE CONFIGURATION
+     * ============================================================
+     */
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyDphujpz9k5XYeVyUJpswTVK5U8V1TpNhU",
+
+      authDomain:
+        "freelancer-7e8b2.firebaseapp.com",
+
+      projectId:
+        "freelancer-7e8b2",
+
+      storageBucket:
+        "freelancer-7e8b2.firebasestorage.app",
+
+      messagingSenderId:
+        "672375011806",
+
+      appId:
+        "1:672375011806:web:17544f4ca6adf3dc9c054f"
+
+    };
+
+
+    /*
+     * ============================================================
+     * INITIALIZE FIREBASE
+     * ============================================================
+     */
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const googleProvider =
+      new GoogleAuthProvider();
+
+
+
+      onAuthStateChanged(auth, (user) => {
+  if (user) {
+    redirectToDashboard();
+  }
+});
+
+
+    /*
+     * ============================================================
+     * DOM ELEMENTS
+     * ============================================================
+     */
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const emailInput =
+      document.getElementById("email");
+
+    const passwordInput =
+      document.getElementById("password");
+
+    const googleLoginBtn =
+      document.getElementById("googleLoginBtn");
+
+    const loginButton =
+      document.getElementById("loginButton");
+
+    const togglePasswordBtn =
+      document.getElementById("togglePassword");
+
+    const rememberMe =
+      document.getElementById("rememberMe");
+
+
+    /*
+     * ============================================================
+     * BASIC SAFETY CHECK
+     * ============================================================
+     */
+
+    if (
+      !loginForm ||
+      !emailInput ||
+      !passwordInput ||
+      !googleLoginBtn ||
+      !loginButton ||
+      !togglePasswordBtn ||
+      !rememberMe
+    ) {
+
+      console.error(
+        "Login page initialization failed: required HTML elements are missing."
+      );
+
+      throw new Error(
+        "Required login page elements are missing."
+      );
+    }
+
+
+    /*
+     * ============================================================
+     * ERROR MESSAGE
+     * ============================================================
+     */
+
+    const errorEl =
+      document.createElement("div");
+
+    errorEl.className =
+      "auth-error";
+
+    errorEl.setAttribute(
+      "role",
+      "alert"
+    );
+
+    errorEl.setAttribute(
+      "aria-live",
+      "polite"
+    );
+
+    errorEl.hidden = true;
+
+    loginForm.parentNode.insertBefore(
+      errorEl,
+      loginForm
+    );
+
+
+    /*
+     * ============================================================
+     * SHOW ERROR
+     * ============================================================
+     */
+
+    function showError(message) {
+
+      errorEl.textContent = message;
+
+      errorEl.hidden = false;
+
+    }
+
+
+    /*
+     * ============================================================
+     * CLEAR ERROR
+     * ============================================================
+     */
+
+    function clearError() {
+
+      errorEl.textContent = "";
+
+      errorEl.hidden = true;
+
+    }
+
+
+    /*
+     * ============================================================
+     * PASSWORD TOGGLE
+     * ============================================================
+     */
+
+    togglePasswordBtn.addEventListener(
+      "click",
+      () => {
+
+        const showingPassword =
+          passwordInput.type === "text";
+
+        if (showingPassword) {
+
+          passwordInput.type = "password";
+
+          togglePasswordBtn.textContent =
+            "👁️";
+
+          togglePasswordBtn.title =
+            "Show password";
+
+          togglePasswordBtn.setAttribute(
+            "aria-label",
+            "Show password"
+          );
+
+          togglePasswordBtn.setAttribute(
+            "aria-pressed",
+            "false"
+          );
+
+        } else {
+
+          passwordInput.type = "text";
+
+          togglePasswordBtn.textContent =
+            "🔒";
+
+          togglePasswordBtn.title =
+            "Hide password";
+
+          togglePasswordBtn.setAttribute(
+            "aria-label",
+            "Hide password"
+          );
+
+          togglePasswordBtn.setAttribute(
+            "aria-pressed",
+            "true"
+          );
+
+        }
+
+      }
+    );
+
+
+    /*
+     * ============================================================
+     * BUTTON LOADING STATE
+     * ============================================================
+     */
+
+    function setButtonLoading(
+      button,
+      loading,
+      loadingText,
+      defaultText
+    ) {
+
+      button.disabled = loading;
+
+      button.textContent =
+        loading
+          ? loadingText
+          : defaultText;
+
+    }
+
+
+    /*
+     * ============================================================
+     * FORM LOADING STATE
+     * ============================================================
+     */
+
+    function setFormLoading(loading) {
+
+      emailInput.disabled = loading;
+
+      passwordInput.disabled = loading;
+
+      rememberMe.disabled = loading;
+
+      loginButton.disabled = loading;
+
+      googleLoginBtn.disabled = loading;
+
+    }
+
+
+    /*
+     * ============================================================
+     * REDIRECT AFTER LOGIN
+     * ============================================================
+     */
+
+    function redirectToDashboard() {
+
+      window.location.replace(
+        "dashboard/index.html"
+      );
+
+    }
+
+    /*
+     * ============================================================
+     * GOOGLE LOGIN
+     * ============================================================
+     */
+
+    googleLoginBtn.addEventListener(
+      "click",
+      async () => {
+
+        clearError();
+
+        setFormLoading(true);
+
+        const originalText =
+          "Continue with Google";
+
+        setButtonLoading(
+          googleLoginBtn,
+          true,
+          "Signing in…",
+          originalText
+        );
+
+        try {
+
+          /*
+           * Respect "Remember me" for Google login too.
+           */
+
+          await setPersistence(
+            auth,
+            rememberMe.checked
+              ? browserLocalPersistence
+              : browserSessionPersistence
+          );
+
+
+          /*
+           * Start Google authentication.
+           */
+
+          await signInWithPopup(
+            auth,
+            googleProvider
+          );
+
+
+          /*
+           * onAuthStateChanged()
+           * will perform the redirect.
+           */
+
+        } catch (error) {
+
+          console.error(
+            "Google sign-in error:",
+            error
+          );
+
+
+          switch (error.code) {
+
+            case "auth/popup-closed-by-user":
+
+              showError(
+                "Google sign-in was cancelled."
+              );
+
+              break;
+
+
+            case "auth/popup-blocked":
+
+              showError(
+                "Your browser blocked the Google login popup. Please allow popups for this website and try again."
+              );
+
+              break;
+
+
+            case "auth/cancelled-popup-request":
+
+              showError(
+                "Another Google sign-in request is already in progress."
+              );
+
+              break;
+
+
+            case "auth/account-exists-with-different-credential":
+
+              showError(
+                "An account already exists with this email using a different sign-in method."
+              );
+
+              break;
+
+
+            case "auth/unauthorized-domain":
+
+              showError(
+                "This website domain is not authorized in Firebase Authentication."
+              );
+
+              break;
+
+
+            case "auth/network-request-failed":
+
+              showError(
+                "Network error. Please check your internet connection and try again."
+              );
+
+              break;
+
+
+            default:
+
+              showError(
+                "Google sign-in failed. Please try again."
+              );
+
+          }
+
+        } finally {
+
+          setFormLoading(false);
+
+          setButtonLoading(
+            googleLoginBtn,
+            false,
+            "",
+            originalText
+          );
+
+        }
+
+      }
+    );
+
+
+    /*
+     * ============================================================
+     * EMAIL/PASSWORD LOGIN
+     * ============================================================
+     */
+
+    loginForm.addEventListener(
+      "submit",
+      async (event) => {
+
+        event.preventDefault();
+
+        clearError();
+
+
+        /*
+         * Get values.
+         */
+
+        const email =
+          emailInput.value.trim();
+
+        const password =
+          passwordInput.value;
+
+
+        /*
+         * Validate email.
+         */
+
+        if (!email) {
+
+          showError(
+            "Please enter your email address."
+          );
+
+          emailInput.focus();
+
+          return;
+
+        }
+
+
+        /*
+         * Validate password.
+         */
+
+        if (!password) {
+
+          showError(
+            "Please enter your password."
+          );
+
+          passwordInput.focus();
+
+          return;
+
+        }
+
+
+        /*
+         * Basic browser email validation.
+         */
+
+        if (!emailInput.checkValidity()) {
+
+          showError(
+            "Please enter a valid email address."
+          );
+
+          emailInput.focus();
+
+          return;
+
+        }
+
+
+        /*
+         * Disable everything while logging in.
+         */
+
+        setFormLoading(true);
+
+        setButtonLoading(
+          loginButton,
+          true,
+          "Logging in…",
+          "Log in"
+        );
+
+
+        try {
+
+          /*
+           * Choose authentication persistence.
+           *
+           * Remember me checked:
+           *     browserLocalPersistence
+           *
+           * Remember me unchecked:
+           *     browserSessionPersistence
+           */
+
+          await setPersistence(
+            auth,
+            rememberMe.checked
+              ? browserLocalPersistence
+              : browserSessionPersistence
+          );
+
+
+          /*
+           * Authenticate user.
+           */
+
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+          /*
+           * Firebase will trigger
+           * onAuthStateChanged().
+           *
+           * That function redirects
+           * to the dashboard.
+           */
+
+        } catch (error) {
+
+          console.error(
+            "Email login error:",
+            error
+          );
+
+
+          switch (error.code) {
+
+            case "auth/invalid-email":
+
+              showError(
+                "That email address is not valid."
+              );
+
+              emailInput.focus();
+
+              break;
+
+
+            case "auth/user-not-found":
+
+            case "auth/wrong-password":
+
+            case "auth/invalid-credential":
+
+              showError(
+                "Incorrect email or password."
+              );
+
+              break;
+
+
+            case "auth/user-disabled":
+
+              showError(
+                "This account has been disabled. Please contact support."
+              );
+
+              break;
+
+
+            case "auth/too-many-requests":
+
+              showError(
+                "Too many unsuccessful login attempts. Please wait a while and try again."
+              );
+
+              break;
+
+
+            case "auth/network-request-failed":
+
+              showError(
+                "Network error. Please check your internet connection and try again."
+              );
+
+              break;
+
+
+            case "auth/operation-not-allowed":
+
+              showError(
+                "Email/password login is not enabled in Firebase Authentication."
+              );
+
+              break;
+
+
+            default:
+
+              showError(
+                "Login failed. Please check your details and try again."
+              );
+
+          }
+
+        } finally {
+
+          setFormLoading(false);
+
+          setButtonLoading(
+            loginButton,
+            false,
+            "",
+            "Log in"
+          );
+
+        }
+
+      }
+    );
+
+
+    /*
+     * ============================================================
+     * CLEAR ERRORS WHEN USER STARTS TYPING
+     * ============================================================
+     */
+
+    emailInput.addEventListener(
+      "input",
+      () => {
+
+        if (!errorEl.hidden) {
+          clearError();
+        }
+
+      }
+    );
+
+
+    passwordInput.addEventListener(
+      "input",
+      () => {
+
+        if (!errorEl.hidden) {
+          clearError();
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+
+</html>

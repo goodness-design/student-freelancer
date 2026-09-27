@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create account — StudentFreelance</title>
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/auth.css">
+
+  <style>
+    /* =========================================
+       Password
+    ========================================= */
+
+    .password-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .password-wrapper input {
+      width: 100%;
+      padding-right: 48px;
+      box-sizing: border-box;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      border: 0;
+      background: transparent;
+
+      cursor: pointer;
+
+      font-size: 16px;
+
+      padding: 6px;
+
+      color: #718096;
+    }
+
+    .toggle-password:hover {
+      color: #2563eb;
+    }
+
+
+    /* =========================================
+       Password strength
+    ========================================= */
+
+    .password-strength {
+      margin-top: 8px;
+    }
+
+    .password-strength-text {
+      font-size: 12px;
+      color: #718096;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .strength-bar {
+      width: 100%;
+      height: 4px;
+
+      background: #e5e7eb;
+
+      border-radius: 999px;
+
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      width: 0%;
+      height: 100%;
+
+      background: #22c55e;
+
+      transition:
+        width 0.25s ease,
+        background 0.25s ease;
+    }
+
+
+    /* =========================================
+       Password requirements
+    ========================================= */
+
+    .password-requirements {
+      list-style: none;
+
+      margin: 8px 0 0;
+      padding: 0;
+
+      font-size: 12px;
+
+      color: #718096;
+    }
+
+    .password-requirements li {
+      margin: 4px 0;
+    }
+
+    .password-requirements li::before {
+      content: "○ ";
+    }
+
+    .password-requirements li.valid {
+      color: #16a34a;
+    }
+
+    .password-requirements li.valid::before {
+      content: "✓ ";
+    }
+
+
+    /* =========================================
+       Messages
+    ========================================= */
+
+    .auth-message {
+      padding: 11px 13px;
+
+      border-radius: 7px;
+
+      margin: 12px 0;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+    .auth-message.error {
+      color: #b91c1c;
+
+      background: #fff5f5;
+
+      border: 1px solid #fecaca;
+    }
+
+    .auth-message.success {
+      color: #166534;
+
+      background: #f0fdf4;
+
+      border: 1px solid #bbf7d0;
+    }
+
+
+    /* =========================================
+       Loading
+    ========================================= */
+
+    button:disabled,
+    input:disabled,
+    select:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+
+    /* =========================================
+       Google button
+    ========================================= */
+
+    .google-letter {
+      font-weight: 700;
+      margin-right: 7px;
+    }
+  </style>
+</head>
+
+
+<body>
+
+<div class="auth-shell">
+
+  <!-- =========================================
+       LEFT SIDE
+  ========================================= -->
+
+  <div class="auth-visual">
+
+    <a href="index.html" class="nav-logo">
+      <span class="mark">SF</span>
+      StudentFreelance
+    </a>
+
+
+
+
+    <div class="auth-quote">
+
+      <h2>
+        Join thousands of students already earning.
+      </h2>
+
+      <p>
+        Set up your profile, list a service,
+        and start getting orders from real clients.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       RIGHT SIDE
+  ========================================= -->
+
+  <div class="auth-form-side">
+
+    <div class="auth-form-wrap">
+
+      <a href="index.html" class="nav-logo">
+        <span class="mark">SF</span>
+        StudentFreelance
+      </a>
+
+
+      <h1>
+        Create your account
+      </h1>
+
+
+      <p>
+        Already have one?
+
+        <a
+          href="login.html"
+          style="color:var(--blue); font-weight:600;"
+        >
+          Log in
+        </a>
+
+        instead.
+      </p>
+
+
+      <!-- =====================================
+           GOOGLE
+      ====================================== -->
+
+      <button
+        type="button"
+        id="googleBtn"
+        class="btn-social"
+      >
+
+        <span class="google-letter">
+          G
+        </span>
+
+        Sign up with Google
+
+      </button>
+
+
+      <div class="auth-divider">
+        or sign up with email
+      </div>
+
+
+      <!-- =====================================
+           MESSAGE
+      ====================================== -->
+
+      <div
+        id="authMessage"
+        class="auth-message"
+        hidden
+        role="alert"
+        aria-live="polite"
+      ></div>
+
+
+      <!-- =====================================
+           SIGNUP FORM
+      ====================================== -->
+
+      <form
+        id="signupForm"
+        novalidate
+      >
+
+        <!-- Full name -->
+
+        <div class="field">
+
+          <label for="name">
+            Full name
+          </label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your full name"
+            autocomplete="name"
+            minlength="2"
+            maxlength="80"
+            required
+          >
+
+        </div>
+
+
+        <!-- Email -->
+
+        <div class="field">
+
+          <label for="email">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@university.edu.ng"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <!-- University -->
+
+        <div class="field">
+
+          <label for="university">
+            University
+          </label>
+
+          <input
+            type="text"
+            id="university"
+            name="university"
+            placeholder="e.g. University of Lagos"
+            maxlength="120"
+            required
+          >
+
+        </div>
+
+
+        <!-- Account type -->
+
+        <div class="field">
+
+          <label for="status">
+            I am a
+          </label>
+
+          <select
+            id="status"
+            name="status"
+            required
+          >
+
+            <option value="">
+              Select one
+            </option>
+
+            <option value="student">
+              Student offering services
+            </option>
+
+            <option value="client">
+              Client hiring students
+            </option>
+
+            <option value="both">
+              Both
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Password -->
+
+        <div class="field">
+
+          <label for="password">
+            Password
+          </label>
+
+          <div class="password-wrapper">
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              autocomplete="new-password"
+              required
+            >
+
+            <button
+              type="button"
+              id="togglePassword"
+              class="toggle-password"
+              aria-label="Show password"
+            >
+              👁️
+            </button>
+
+          </div>
+
+
+          <div class="password-strength">
+
+            <span
+              id="strengthText"
+              class="password-strength-text"
+            >
+              Password strength
+            </span>
+
+            <div class="strength-bar">
+
+              <div
+                id="strengthFill"
+                class="strength-fill"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <ul class="password-requirements">
+
+            <li id="reqLength">
+              At least 8 characters
+            </li>
+
+            <li id="reqUppercase">
+              One uppercase letter
+            </li>
+
+            <li id="reqNumber">
+              One number
+            </li>
+
+            <li id="reqSpecial">
+              One special character
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <!-- Confirm password -->
+
+        <div class="field">
+
+          <label for="confirm">
+            Confirm password
+          </label>
+
+          <div class="password-wrapper">
+
+            <input
+              type="password"
+              id="confirm"
+              name="confirm"
+              placeholder="Re-enter your password"
+              autocomplete="new-password"
+              required
+            >
+
+            <button
+              type="button"
+              id="toggleConfirm"
+              class="toggle-password"
+              aria-label="Show password"
+            >
+              👁️
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Submit -->
+
+        <button
+          type="submit"
+          id="signupBtn"
+          class="btn btn-primary btn-block"
+        >
+          Create account
+        </button>
+
+      </form>
+
+
+      <div class="auth-switch">
+
+        By signing up, you agree to our
+
+        <a href="terms.html">
+          Terms
+        </a>
+
+        and
+
+        <a href="privacy.html">
+          Privacy Policy
+        </a>.
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ==========================================================
+     FIREBASE
+=========================================================== -->
+
+<script type="module">
+
+  /* =========================================================
+     IMPORT FIREBASE
+  ========================================================= */
+
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+  import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    createUserWithEmailAndPassword,
+    updateProfile,
+    sendEmailVerification,
+    onAuthStateChanged,
+    setPersistence,
+    browserLocalPersistence
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+  import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+
+  /* =========================================================
+     FIREBASE CONFIG
+  ========================================================= */
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyDphujpz9k5XYeVyUJpswTVK5U8V1TpNhU",
+
+    authDomain:
+      "freelancer-7e8b2.firebaseapp.com",
+
+    projectId:
+      "freelancer-7e8b2",
+
+    storageBucket:
+      "freelancer-7e8b2.firebasestorage.app",
+
+    messagingSenderId:
+      "672375011806",
+
+    appId:
+      "1:672375011806:web:17544f4ca6adf3dc9c054f"
+
+  };
+
+
+  /* =========================================================
+     INITIALIZE FIREBASE
+  ========================================================= */
+
+  const app =
+    initializeApp(firebaseConfig);
+
+  const auth =
+    getAuth(app);
+
+  const db =
+    getFirestore(app);
+
+  const googleProvider =
+    new GoogleAuthProvider();
+
+
+
+  /* =========================================================
+     DOM ELEMENTS
+  ========================================================= */
+
+  const form =
+    document.getElementById("signupForm");
+
+  const googleBtn =
+    document.getElementById("googleBtn");
+
+  const signupBtn =
+    document.getElementById("signupBtn");
+
+  const message =
+    document.getElementById("authMessage");
+
+
+  const nameInput =
+    document.getElementById("name");
+
+  const emailInput =
+    document.getElementById("email");
+
+  const universityInput =
+    document.getElementById("university");
+
+  const statusInput =
+    document.getElementById("status");
+
+  const passwordInput =
+    document.getElementById("password");
+
+  const confirmInput =
+    document.getElementById("confirm");
+
+
+  const togglePassword =
+    document.getElementById("togglePassword");
+
+  const toggleConfirm =
+    document.getElementById("toggleConfirm");
+
+
+  const strengthText =
+    document.getElementById("strengthText");
+
+  const strengthFill =
+    document.getElementById("strengthFill");
+
+
+  const reqLength =
+    document.getElementById("reqLength");
+
+  const reqUppercase =
+    document.getElementById("reqUppercase");
+
+  const reqNumber =
+    document.getElementById("reqNumber");
+
+  const reqSpecial =
+    document.getElementById("reqSpecial");
+
+
+
+  /* =========================================================
+     STATE
+  ========================================================= */
+
+  let isBusy = false;
+
+  /*
+   * Prevents the authentication listener from
+   * redirecting while signup is taking place.
+   */
+
+  let signupStartedHere = false;
+
+
+
+  /* =========================================================
+     MESSAGE FUNCTIONS
+  ========================================================= */
+
+  function showError(text) {
+
+    message.className =
+      "auth-message error";
+
+    message.textContent =
+      text;
+
+    message.hidden =
+      false;
+
+  }
+
+
+  function showSuccess(text) {
+
+    message.className =
+      "auth-message success";
+
+    message.textContent =
+      text;
+
+    message.hidden =
+      false;
+
+  }
+
+
+  function clearMessage() {
+
+    message.hidden =
+      true;
+
+    message.textContent =
+      "";
+
+  }
+
+
+
+  /* =========================================================
+     DISABLE FORM
+  ========================================================= */
+
+  function setLoading(loading) {
+
+    isBusy =
+      loading;
+
+    const elements =
+      form.querySelectorAll(
+        "input, select, button"
+      );
+
+    elements.forEach(
+      element => {
+        element.disabled =
+          loading;
+      }
+    );
+
+    googleBtn.disabled =
+      loading;
+
+  }
+
+
+
+  /* =========================================================
+     PASSWORD VISIBILITY
+  ========================================================= */
+
+  function createPasswordToggle(
+    button,
+    input
+  ) {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const hidden =
+          input.type === "password";
+
+
+        input.type =
+          hidden
+            ? "text"
+            : "password";
+
+
+        button.textContent =
+          hidden
+            ? "🔒"
+            : "👁️";
+
+
+        button.setAttribute(
+          "aria-label",
+          hidden
+            ? "Hide password"
+            : "Show password"
+        );
+
+      }
+    );
+
+  }
+
+
+  createPasswordToggle(
+    togglePassword,
+    passwordInput
+  );
+
+
+  createPasswordToggle(
+    toggleConfirm,
+    confirmInput
+  );
+
+
+
+  /* =========================================================
+     PASSWORD STRENGTH
+  ========================================================= */
+
+  function updatePasswordStrength() {
+
+    const password =
+      passwordInput.value;
+
+
+    const validLength =
+      password.length >= 8;
+
+    const validUppercase =
+      /[A-Z]/.test(password);
+
+    const validNumber =
+      /[0-9]/.test(password);
+
+    const validSpecial =
+      /[^A-Za-z0-9]/.test(password);
+
+
+    reqLength.classList.toggle(
+      "valid",
+      validLength
+    );
+
+    reqUppercase.classList.toggle(
+      "valid",
+      validUppercase
+    );
+
+    reqNumber.classList.toggle(
+      "valid",
+      validNumber
+    );
+
+    reqSpecial.classList.toggle(
+      "valid",
+      validSpecial
+    );
+
+
+    let score = 0;
+
+    if (validLength) score++;
+
+    if (validUppercase) score++;
+
+    if (validNumber) score++;
+
+    if (validSpecial) score++;
+
+
+    const percentage =
+      score * 25;
+
+
+    strengthFill.style.width =
+      `${percentage}%`;
+
+
+    if (!password) {
+
+      strengthText.textContent =
+        "Password strength";
+
+      strengthFill.style.background =
+        "#e5e7eb";
+
+    }
+
+    else if (score === 1) {
+
+      strengthText.textContent =
+        "Very weak";
+
+      strengthFill.style.background =
+        "#ef4444";
+
+    }
+
+    else if (score === 2) {
+
+      strengthText.textContent =
+        "Weak";
+
+      strengthFill.style.background =
+        "#f97316";
+
+    }
+
+    else if (score === 3) {
+
+      strengthText.textContent =
+        "Good";
+
+      strengthFill.style.background =
+        "#eab308";
+
+    }
+
+    else {
+
+      strengthText.textContent =
+        "Strong";
+
+      strengthFill.style.background =
+        "#22c55e";
+
+    }
+
+  }
+
+
+  passwordInput.addEventListener(
+    "input",
+    updatePasswordStrength
+  );
+
+
+
+  /* =========================================================
+     SAVE USER PROFILE
+  ========================================================= */
+
+  async function saveUserProfile(
+    user,
+    profile = {}
+  ) {
+
+    const userRef =
+      doc(
+        db,
+        "users",
+        user.uid
+      );
+
+
+    const existing =
+      await getDoc(userRef);
+
+
+    const data = {
+
+      uid:
+        user.uid,
+
+      fullName:
+        profile.fullName ??
+        user.displayName ??
+        "",
+
+      email:
+        user.email ??
+        "",
+
+      university:
+        profile.university ??
+        "",
+
+      status:
+        profile.status ??
+        "",
+
+      photoURL:
+        user.photoURL ??
+        "",
+
+      emailVerified:
+        user.emailVerified,
+
+      updatedAt:
+        serverTimestamp()
+
+    };
+
+
+    if (!existing.exists()) {
+
+      data.createdAt =
+        serverTimestamp();
+
+    }
+
+
+    await setDoc(
+      userRef,
+      data,
+      {
+        merge: true
+      }
+    );
+
+  }
+
+
+
+  /* =========================================================
+     AUTH STATE
+  ========================================================= */
+
+  onAuthStateChanged(
+    auth,
+    async user => {
+
+      /*
+       * No authenticated user.
+       */
+
+      if (!user) {
+        return;
+      }
+
+
+      /*
+       * If this page just created the user,
+       * don't redirect from here.
+       */
+
+      if (signupStartedHere) {
+        return;
+      }
+
+
+      /*
+       * A user already has an active session
+       * and opened signup.html.
+       */
+
+      try {
+
+        const userRef =
+          doc(
+            db,
+            "users",
+            user.uid
+          );
+
+
+        const profile =
+          await getDoc(userRef);
+
+
+        if (profile.exists()) {
+
+          window.location.replace(
+            "dashboard/index.html"
+          );
+
+        }
+
+        else {
+
+          window.location.replace(
+            "complete-profile.html"
+          );
+
+        }
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "Could not check user profile:",
+          error
+        );
+
+        /*
+         * Don't expose database details.
+         */
+
+        window.location.replace(
+          "dashboard/index.html"
+        );
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     GOOGLE SIGNUP
+  ========================================================= */
+
+  googleBtn.addEventListener(
+    "click",
+    async () => {
+
+      if (isBusy) {
+        return;
+      }
+
+
+      clearMessage();
+
+
+      signupStartedHere =
+        true;
+
+
+      setLoading(true);
+
+
+      googleBtn.innerHTML =
+        "Signing up with Google…";
+
+
+      try {
+
+        /*
+         * Remember Google users.
+         */
+
+        await setPersistence(
+          auth,
+          browserLocalPersistence
+        );
+
+
+        /*
+         * Open Google.
+         */
+
+        const result =
+          await signInWithPopup(
+            auth,
+            googleProvider
+          );
+
+
+        const user =
+          result.user;
+
+
+        console.log(
+          "Google authentication successful:",
+          user.uid
+        );
+
+
+        /*
+         * Check whether profile already exists.
+         */
+
+        const userRef =
+          doc(
+            db,
+            "users",
+            user.uid
+          );
+
+
+        const existing =
+          await getDoc(userRef);
+
+
+        /*
+         * Existing StudentFreelance user.
+         */
+
+        if (existing.exists()) {
+
+          window.location.replace(
+            "dashboard/index.html"
+          );
+
+          return;
+
+        }
+
+
+        /*
+         * New Google user.
+         *
+         * Google gives us name/email/photo,
+         * but not university/account type.
+         */
+
+        try {
+
+          await saveUserProfile(
+            user,
+            {
+              fullName:
+                user.displayName || ""
+            }
+          );
+
+        }
+
+        catch (profileError) {
+
+          console.error(
+            "Google user created but profile failed:",
+            profileError
+          );
+
+
+          showError(
+            "Your Google account was created, but we couldn't finish your profile. Please try logging in again."
+          );
+
+          return;
+
+        }
+
+
+        /*
+         * Send new Google users to
+         * complete their profile.
+         */
+
+        window.location.replace(
+          "complete-profile.html"
+        );
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "Google signup failed:",
+          error
+        );
+
+
+        switch (error.code) {
+
+          case "auth/popup-closed-by-user":
+
+            showError(
+              "Google sign-up was cancelled."
+            );
+
+            break;
+
+
+          case "auth/popup-blocked":
+
+            showError(
+              "Your browser blocked the Google popup. Please allow popups and try again."
+            );
+
+            break;
+
+
+          case "auth/account-exists-with-different-credential":
+
+            showError(
+              "An account already exists with this email using another sign-in method. Please log in instead."
+            );
+
+            break;
+
+
+          case "auth/cancelled-popup-request":
+
+            showError(
+              "A Google sign-in request is already running."
+            );
+
+            break;
+
+
+          case "auth/unauthorized-domain":
+
+            showError(
+              "This website domain is not authorized in Firebase."
+            );
+
+            break;
+
+
+          case "auth/network-request-failed":
+
+            showError(
+              "Network error. Please check your internet connection."
+            );
+
+            break;
+
+
+          default:
+
+            showError(
+              "Google sign-up failed. Please try again."
+            );
+
+        }
+
+      }
+
+      finally {
+
+        setLoading(false);
+
+        googleBtn.innerHTML =
+          '<span class="google-letter">G</span> Sign up with Google';
+
+        signupStartedHere =
+          false;
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     EMAIL SIGNUP
+  ========================================================= */
+
+  form.addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+
+      if (isBusy) {
+        return;
+      }
+
+
+      clearMessage();
+
+
+      /*
+       * Get values.
+       */
+
+      const fullName =
+        nameInput.value.trim();
+
+      const email =
+        emailInput.value.trim().toLowerCase();
+
+      const university =
+        universityInput.value.trim();
+
+      const status =
+        statusInput.value;
+
+      const password =
+        passwordInput.value;
+
+      const confirmPassword =
+        confirmInput.value;
+
+
+
+      /* =====================================================
+         VALIDATION
+      ===================================================== */
+
+      if (!fullName) {
+
+        showError(
+          "Please enter your full name."
+        );
+
+        nameInput.focus();
+
+        return;
+
+      }
+
+
+      if (fullName.length < 2) {
+
+        showError(
+          "Your name must contain at least 2 characters."
+        );
+
+        nameInput.focus();
+
+        return;
+
+      }
+
+
+      if (!email) {
+
+        showError(
+          "Please enter your email address."
+        );
+
+        emailInput.focus();
+
+        return;
+
+      }
+
+
+      if (!emailInput.checkValidity()) {
+
+        showError(
+          "Please enter a valid email address."
+        );
+
+        emailInput.focus();
+
+        return;
+
+      }
+
+
+      if (!university) {
+
+        showError(
+          "Please enter your university."
+        );
+
+        universityInput.focus();
+
+        return;
+
+      }
+
+
+      if (!status) {
+
+        showError(
+          "Please select your account type."
+        );
+
+        statusInput.focus();
+
+        return;
+
+      }
+
+
+      if (password.length < 8) {
+
+        showError(
+          "Password must contain at least 8 characters."
+        );
+
+        passwordInput.focus();
+
+        return;
+
+      }
+
+
+      if (!/[A-Z]/.test(password)) {
+
+        showError(
+          "Password must contain at least one uppercase letter."
+        );
+
+        passwordInput.focus();
+
+        return;
+
+      }
+
+
+      if (!/[0-9]/.test(password)) {
+
+        showError(
+          "Password must contain at least one number."
+        );
+
+        passwordInput.focus();
+
+        return;
+
+      }
+
+
+      if (!/[^A-Za-z0-9]/.test(password)) {
+
+        showError(
+          "Password must contain at least one special character."
+        );
+
+        passwordInput.focus();
+
+        return;
+
+      }
+
+
+      if (password !== confirmPassword) {
+
+        showError(
+          "Passwords do not match."
+        );
+
+        confirmInput.focus();
+
+        return;
+
+      }
+
+
+
+      /* =====================================================
+         CREATE ACCOUNT
+      ===================================================== */
+
+      signupStartedHere =
+        true;
+
+      setLoading(true);
+
+      signupBtn.textContent =
+        "Creating account…";
+
+
+      try {
+
+        /*
+         * Keep user signed in.
+         */
+
+        await setPersistence(
+          auth,
+          browserLocalPersistence
+        );
+
+
+        /*
+         * -----------------------------------------------
+         * STEP 1
+         * Create Firebase Authentication account
+         * -----------------------------------------------
+         */
+
+        const result =
+          await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+        const user =
+          result.user;
+
+
+        console.log(
+          "Authentication account created:",
+          user.uid
+        );
+
+
+        /*
+         * -----------------------------------------------
+         * STEP 2
+         * Update Firebase Auth profile
+         * -----------------------------------------------
+         */
+
+        try {
+
+          await updateProfile(
+            user,
+            {
+              displayName:
+                fullName
+            }
+          );
+
+        }
+
+        catch (profileError) {
+
+          /*
+           * Important:
+           *
+           * Authentication already succeeded.
+           * Do NOT tell the user signup failed.
+           */
+
+          console.warn(
+            "Display name update failed:",
+            profileError
+          );
+
+        }
+
+
+        /*
+         * -----------------------------------------------
+         * STEP 3
+         * Create Firestore profile
+         * -----------------------------------------------
+         */
+
+        try {
+
+          await saveUserProfile(
+            user,
+            {
+              fullName,
+              university,
+              status
+            }
+          );
+
+        }
+
+        catch (firestoreError) {
+
+          /*
+           * Authentication succeeded but Firestore failed.
+           */
+
+          console.error(
+            "Firestore profile failed:",
+            firestoreError
+          );
+
+
+          showError(
+            "Your account was created, but we couldn't save your profile. Please try logging in again."
+          );
+
+
+          return;
+
+        }
+
+
+        /*
+         * -----------------------------------------------
+         * STEP 4
+         * Email verification
+         * -----------------------------------------------
+         */
+
+        try {
+
+          await sendEmailVerification(
+            user
+          );
+
+          console.log(
+            "Verification email sent."
+          );
+
+        }
+
+        catch (verificationError) {
+
+          console.warn(
+            "Verification email failed:",
+            verificationError
+          );
+
+        }
+
+
+        /*
+         * -----------------------------------------------
+         * STEP 5
+         * Success
+         * -----------------------------------------------
+         */
+
+        showSuccess(
+          "Account created successfully. Redirecting…"
+        );
+
+
+        /*
+         * Give the message a moment to appear.
+         */
+
+        setTimeout(
+          () => {
+
+            window.location.replace(
+              "dashboard/index.html"
+            );
+
+          },
+          700
+        );
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "Email signup failed:",
+          error
+        );
+
+
+        switch (error.code) {
+
+          /*
+           * THIS IS THE ERROR YOU HAD.
+           */
+
+          case "auth/email-already-in-use":
+
+            showError(
+              "This email is already registered. Please log in instead."
+            );
+
+            emailInput.focus();
+
+            break;
+
+
+          case "auth/invalid-email":
+
+            showError(
+              "Please enter a valid email address."
+            );
+
+            emailInput.focus();
+
+            break;
+
+
+          case "auth/weak-password":
+
+            showError(
+              "Firebase rejected this password because it is too weak. Please choose a stronger password."
+            );
+
+            passwordInput.focus();
+
+            break;
+
+
+          case "auth/operation-not-allowed":
+
+            showError(
+              "Email/password sign-up is currently disabled in Firebase."
+            );
+
+            break;
+
+
+          case "auth/network-request-failed":
+
+            showError(
+              "Network error. Please check your internet connection and try again."
+            );
+
+            break;
+
+
+          case "auth/too-many-requests":
+
+            showError(
+              "Too many attempts. Please wait a while before trying again."
+            );
+
+            break;
+
+
+          default:
+
+            /*
+             * Keep the technical information
+             * in the browser console.
+             */
+
+            console.error(
+              "Unhandled Firebase error:",
+              error.code,
+              error.message
+            );
+
+
+            showError(
+              "We couldn't create your account. Please try again."
+            );
+
+        }
+
+      }
+
+      finally {
+
+        setLoading(false);
+
+        signupBtn.textContent =
+          "Create account";
+
+        signupStartedHere =
+          false;
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     CLEAR ERROR WHILE USER TYPES
+  ========================================================= */
+
+  [
+    nameInput,
+    emailInput,
+    universityInput,
+    statusInput,
+    passwordInput,
+    confirmInput
+  ].forEach(
+    input => {
+
+      input.addEventListener(
+        "input",
+        () => {
+
+          /*
+           * Don't clear a success message unnecessarily.
+           */
+
+          if (
+            message.classList.contains(
+              "error"
+            )
+          ) {
+
+            clearMessage();
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+</script>
+
+</body>
+</html>

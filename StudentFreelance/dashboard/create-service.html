@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create a Service — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html" class="active"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header">
+        <a href="my-services.html" style="font-size:0.85rem; color:var(--muted);">← Back to My Services</a>
+        <h1 style="margin-top:6px;">Create a Service</h1>
+      </div>
+
+      <div class="form-panel">
+        <div class="step-label" id="step-label">Step 1 of 9 — Category</div>
+        <div class="step-indicator" id="step-indicator"></div>
+
+        <div class="panel">
+
+          <!-- Step 1: Category -->
+          <div class="fs-step" data-step="1">
+            <h2 style="margin-bottom:18px; font-size:1.1rem;">Choose a category</h2>
+            <div class="category-pick">
+              <label><input type="radio" name="cat" checked><span>💻</span>Web Development</label>
+              <label><input type="radio" name="cat"><span>🎨</span>Graphic Design</label>
+              <label><input type="radio" name="cat"><span>📐</span>UI/UX Design</label>
+              <label><input type="radio" name="cat"><span>🎬</span>Video Editing</label>
+              <label><input type="radio" name="cat"><span>📷</span>Photography</label>
+              <label><input type="radio" name="cat"><span>✍️</span>Writing</label>
+              <label><input type="radio" name="cat"><span>🎵</span>Music Production</label>
+              <label><input type="radio" name="cat"><span>🎓</span>Tutoring</label>
+              <label><input type="radio" name="cat"><span>📱</span>Social Media</label>
+            </div>
+          </div>
+
+          <!-- Step 2: Title -->
+          <div class="fs-step" data-step="2" style="display:none;">
+            <h2 style="margin-bottom:18px; font-size:1.1rem;">Give your service a title</h2>
+            <div class="field">
+              <label>Service title</label>
+              <input type="text" placeholder="I will design a modern logo for your brand">
+            </div>
+            <p style="font-size:0.82rem;">Start with "I will..." — it reads clearly on the marketplace.</p>
+          </div>
+
+          <!-- Step 3: Description -->
+          <div class="fs-step" data-step="3" style="display:none;">
+            <h2 style="margin-bottom:18px; font-size:1.1rem;">Describe your service</h2>
+            <div class="field">
+              <label>Description</label>
+              <textarea rows="7" placeholder="Explain what's included, your process, and what makes your work stand out."></textarea>
+            </div>
+          </div>
+
+          <!-- Step 4: Images -->
+          <div class="fs-step" data-step="4" style="display:none;">
+            <h2 style="margin-bottom:18px; font-size:1.1rem;">Add images or portfolio samples</h2>
+            <div class="upload-zone">
+              <div style="font-size:1.6rem; margin-bottom:10px;">⬆</div>
+              Drag and drop images here, or click to browse<br>
+              <span style="font-size:0.8rem;">PNG or JPG, up to 5 images</span>
+            </div>
+          </div>
+
+          <!-- Step 5: Pricing -->
+          <div class="fs-step" data-step="5" style="display:none;">
+            <h2 style="margin-bottom:18px; font-size:1.1rem;">Set your pricing</h2>
+            <div class="pricing-tiers">
+              <div class="field">
+                <label>Basic (₦)</label>
+                <input type="number" placeholder="15000">
+              </div>
+              <div class="field">
+                <label>Standard (₦)</label>
+                <input type="number" placeholder="30000">
+              </div>
+              <div class="field">
+                <label>Premium (₦)</label>
+                <input type="number" placeholder="60000">
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 6: Delivery time -->
+          <div class="fs-step" data-step="6" style="display:none;">
+            <h2 style="margin-bottom:18px; font-size:1.1rem;">Delivery time</h2>
+            <div class="field">
+              <label>How long will this service take?</label>
+              <select>
+                <option>1 day</option>
+                <option selected>3 days</option>
+                <option>7 days</option>
+                <option>14 days</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Step 7: Revisions -->
+          <div class="fs-step" data-step="7" style="display:none;">
+            <h2 style="margin-bottom:18px; font-size:1.1rem;">Revisions</h2>
+            <div class="field">
+              <label>How many revisions are included?</label>
+              <select>
+                <option>1 revision</option>
+                <option selected>2 revisions</option>
+                <option>3 revisions</option>
+                <option>Unlimited</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Step 8: Preview -->
+          <div class="fs-step" data-step="8" style="display:none;">
+            <h2 style="margin-bottom:18px; font-size:1.1rem;">Preview your service</h2>
+            <div class="preview-card">
+              <div class="thumb" style="aspect-ratio:16/9; background:linear-gradient(135deg, var(--navy), var(--blue));"></div>
+              <div class="body" style="padding:18px;">
+                <div class="freelancer"><span class="avatar">PO</span> Philip O. · UNILAG</div>
+                <div class="title">I will design a modern logo for your brand</div>
+                <div class="meta">
+                  <span class="rating"><span class="star">★</span> New</span>
+                  <span class="price">From ₦15,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 9: Publish -->
+          <div class="fs-step" data-step="9" style="display:none;">
+            <div class="form-success">
+              <div class="icon-circle">✓</div>
+              <h2 style="margin-bottom:10px;">Ready to publish</h2>
+              <p style="margin:0 auto 24px;">Your service will go live on the marketplace immediately after publishing.</p>
+              <a href="my-services.html" class="btn btn-primary btn-block">Publish Service</a>
+            </div>
+          </div>
+
+          <div class="form-nav" id="form-nav">
+            <button class="btn btn-ghost" id="prev-btn">Back</button>
+            <button class="btn btn-primary" id="next-btn">Continue</button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+<script>
+  const totalSteps = 9;
+  let current = 1;
+  const indicator = document.getElementById('step-indicator');
+  const label = document.getElementById('step-label');
+  const stepNames = ['Category','Title','Description','Images','Pricing','Delivery Time','Revisions','Preview','Publish'];
+
+  for (let i = 1; i <= totalSteps; i++) {
+    const seg = document.createElement('div');
+    seg.className = 'seg';
+    seg.dataset.seg = i;
+    indicator.appendChild(seg);
+  }
+
+  function render() {
+    document.querySelectorAll('.fs-step').forEach(s => {
+      s.style.display = (parseInt(s.dataset.step) === current) ? 'block' : 'none';
+    });
+    document.querySelectorAll('.seg').forEach(seg => {
+      const i = parseInt(seg.dataset.seg);
+      seg.classList.toggle('done', i < current);
+      seg.classList.toggle('active', i === current);
+    });
+    label.textContent = `Step ${current} of ${totalSteps} — ${stepNames[current - 1]}`;
+    document.getElementById('prev-btn').style.visibility = current === 1 ? 'hidden' : 'visible';
+    document.getElementById('form-nav').style.display = current === totalSteps ? 'none' : 'flex';
+    document.getElementById('next-btn').textContent = current === totalSteps - 1 ? 'Review' : 'Continue';
+  }
+
+  document.getElementById('next-btn').addEventListener('click', () => {
+    if (current < totalSteps) { current++; render(); window.scrollTo({top:0, behavior:'smooth'}); }
+  });
+  document.getElementById('prev-btn').addEventListener('click', () => {
+    if (current > 1) { current--; render(); window.scrollTo({top:0, behavior:'smooth'}); }
+  });
+
+  render();
+</script>
+
+
+
+
+<style>
+  .fs-step {
+    animation: stepIn 0.28s ease;
+  }
+
+  @keyframes stepIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fs-step.leaving {
+    animation: stepOut 0.15s ease forwards;
+  }
+
+  @keyframes stepOut {
+    to {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  .field-error {
+    color: #c62828;
+    font-size: 0.8rem;
+    margin-top: 6px;
+  }
+
+  .field.invalid input,
+  .field.invalid textarea {
+    border-color: #c62828;
+  }
+</style>
+
+
+
+
+<script src="../js/utils.js"></script>
+<script>
+ 
+  // ------------------------------------------------------------
+  // Collected form data — populated as the user moves through steps
+  // ------------------------------------------------------------
+  const serviceData = {
+    category: 'Web Development',
+    categoryIcon: '💻',
+    title: '',
+    description: '',
+    images: [],
+    pricing: { basic: null, standard: null, premium: null },
+    deliveryTime: '3 days',
+    revisions: '2 revisions'
+  };
+
+  for (let i = 1; i <= totalSteps; i++) {
+    const seg = document.createElement('div');
+    seg.className = 'seg';
+    seg.dataset.seg = i;
+    indicator.appendChild(seg);
+  }
+
+  const nextBtn = document.getElementById('next-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const formNav = document.getElementById('form-nav');
+
+  // ------------------------------------------------------------
+  // Render current step (with transition animation)
+  // ------------------------------------------------------------
+  function render(direction = 'forward') {
+    const outgoing = document.querySelector('.fs-step[style*="display: block"], .fs-step:not([style*="display: none"])');
+
+    const showStep = () => {
+      document.querySelectorAll('.fs-step').forEach(s => {
+        const isCurrent = parseInt(s.dataset.step) === current;
+        s.style.display = isCurrent ? 'block' : 'none';
+        if (isCurrent) {
+          s.classList.remove('leaving');
+          // restart animation
+          s.style.animation = 'none';
+          void s.offsetWidth; // force reflow
+          s.style.animation = '';
+        }
+      });
+
+      document.querySelectorAll('.seg').forEach(seg => {
+        const i = parseInt(seg.dataset.seg);
+        seg.classList.toggle('done', i < current);
+        seg.classList.toggle('active', i === current);
+      });
+
+      label.textContent = `Step ${current} of ${totalSteps} — ${stepNames[current - 1]}`;
+      prevBtn.style.visibility = current === 1 ? 'hidden' : 'visible';
+      formNav.style.display = current === totalSteps ? 'none' : 'flex';
+      nextBtn.textContent = current === totalSteps - 1 ? 'Review' : 'Continue';
+
+      if (current === 8) renderPreview();
+    };
+
+    if (outgoing && direction === 'forward') {
+      outgoing.classList.add('leaving');
+      setTimeout(showStep, 120);
+    } else {
+      showStep();
+    }
+  }
+
+  // ------------------------------------------------------------
+  // Pull values out of the current step's inputs into serviceData
+  // ------------------------------------------------------------
+  function collectStepData(step) {
+    if (step === 1) {
+      const checked = document.querySelector('input[name="cat"]:checked');
+      if (checked) {
+        serviceData.category = checked.closest('label').textContent.trim();
+        serviceData.categoryIcon = checked.nextElementSibling.textContent.trim();
+      }
+    }
+
+    if (step === 2) {
+      serviceData.title = document.querySelector('[data-step="2"] input[type="text"]').value.trim();
+    }
+
+    if (step === 3) {
+      serviceData.description = document.querySelector('[data-step="3"] textarea').value.trim();
+    }
+
+    if (step === 5) {
+      const inputs = document.querySelectorAll('[data-step="5"] input[type="number"]');
+      serviceData.pricing.basic = inputs[0].value ? Number(inputs[0].value) : null;
+      serviceData.pricing.standard = inputs[1].value ? Number(inputs[1].value) : null;
+      serviceData.pricing.premium = inputs[2].value ? Number(inputs[2].value) : null;
+    }
+
+    if (step === 6) {
+      serviceData.deliveryTime = document.querySelector('[data-step="6"] select').value;
+    }
+
+    if (step === 7) {
+      serviceData.revisions = document.querySelector('[data-step="7"] select').value;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // Validate the current step before allowing "Continue"
+  // ------------------------------------------------------------
+  function validateStep(step) {
+    clearFieldErrors();
+
+    if (step === 2) {
+      const input = document.querySelector('[data-step="2"] input[type="text"]');
+      if (!input.value.trim()) {
+        showFieldError(input, 'Please give your service a title.');
+        return false;
+      }
+      if (input.value.trim().length < 10) {
+        showFieldError(input, 'Try a more descriptive title (at least 10 characters).');
+        return false;
+      }
+    }
+
+    if (step === 3) {
+      const textarea = document.querySelector('[data-step="3"] textarea');
+      if (!textarea.value.trim()) {
+        showFieldError(textarea, 'Please describe your service.');
+        return false;
+      }
+      if (textarea.value.trim().length < 30) {
+        showFieldError(textarea, 'Add a bit more detail (at least 30 characters).');
+        return false;
+      }
+    }
+
+    if (step === 5) {
+      const inputs = document.querySelectorAll('[data-step="5"] input[type="number"]');
+      const hasAtLeastOne = Array.from(inputs).some(i => i.value && Number(i.value) > 0);
+      if (!hasAtLeastOne) {
+        showFieldError(inputs[0], 'Please set at least one price tier.');
+        return false;
+      }
+      const hasNegative = Array.from(inputs).some(i => i.value && Number(i.value) < 0);
+      if (hasNegative) {
+        showFieldError(inputs[0], 'Prices can\'t be negative.');
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function showFieldError(inputEl, message) {
+    const field = inputEl.closest('.field') || inputEl.parentElement;
+    field.classList.add('invalid');
+    const err = document.createElement('div');
+    err.className = 'field-error';
+    err.textContent = message;
+    field.appendChild(err);
+    inputEl.focus();
+  }
+
+  function clearFieldErrors() {
+    document.querySelectorAll('.field-error').forEach(el => el.remove());
+    document.querySelectorAll('.field.invalid').forEach(el => el.classList.remove('invalid'));
+  }
+
+  // ------------------------------------------------------------
+  // Build the live preview card from collected data
+  // ------------------------------------------------------------
+  function renderPreview() {
+    const card = document.querySelector('[data-step="8"] .preview-card');
+    card.querySelector('.title').textContent = serviceData.title || 'Untitled service';
+
+    const lowestPrice = Object.values(serviceData.pricing).filter(p => p).sort((a, b) => a - b)[0];
+    card.querySelector('.price').textContent = lowestPrice
+      ? `From ₦${lowestPrice.toLocaleString()}`
+      : 'Price not set';
+  }
+
+  // ------------------------------------------------------------
+  // Navigation
+  // ------------------------------------------------------------
+  nextBtn.addEventListener('click', () => {
+    collectStepData(current);
+
+    if (!validateStep(current)) return;
+
+    if (current < totalSteps) {
+      current++;
+      render('forward');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (current > 1) {
+      current--;
+      render('back');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  render();
+</script>
+</body>
+</html>

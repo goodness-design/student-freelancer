@@ -1,0 +1,329 @@
+/* ==========================================================================
+   StudentFreelance — Landing Page
+   ========================================================================== */
+
+/* --- Hero --- */
+.hero {
+  padding: 72px 0 100px;
+  overflow: hidden;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  margin-bottom: 20px;
+  max-width: 12ch;
+}
+
+.hero-copy p {
+  font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+  max-width: 42ch;
+  margin-bottom: 32px;
+}
+
+.hero-copy .searchbar {
+  max-width: 480px;
+  margin-bottom: 18px;
+}
+
+.popular-searches {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.popular-searches a {
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 999px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.popular-searches a:hover { border-color: var(--blue); color: var(--blue); }
+
+/* Pinboard visual — tilted service-card stack on a navy panel */
+.hero-board {
+  position: relative;
+  background: var(--navy);
+  border-radius: var(--r-lg);
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(61,111,224,0.35), transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(61,111,224,0.25), transparent 50%);
+  border-radius: var(--r-lg);
+}
+
+/* Fixed 220px width by default (desktop). Scales down at each breakpoint below
+   so the three tilted cards never overlap or spill outside the panel. */
+.pin-card {
+  position: absolute;
+  width: 220px;
+  background: var(--card);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-lg);
+  padding: 16px;
+}
+
+.pin-card.p1 { top: 12%; left: 8%; transform: rotate(-7deg); z-index: 1; }
+.pin-card.p2 { top: 30%; right: 6%; transform: rotate(5deg); z-index: 2; }
+.pin-card.p3 { bottom: 10%; left: 20%; transform: rotate(-3deg); z-index: 3; }
+
+.pin-card .thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--navy-3) 100%);
+  overflow: hidden;
+}
+.pin-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.pin-card .title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pin-card .price { font-size: 0.9rem; }
+
+/* --- Section headers --- */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.section-head h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+}
+
+.section-head p { margin-top: 8px; }
+
+/* --- Categories --- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.category-card {
+  padding: 26px 20px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.category-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+
+.category-card .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--blue-light);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+[data-theme="dark"] .category-card .icon { color: #9DB8FF; }
+
+.category-card h3 { font-size: 1rem; margin-bottom: 4px; }
+.category-card span { font-size: 0.82rem; color: var(--muted); }
+
+/* --- Grids --- */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.freelancer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.freelancer-card {
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.freelancer-card .avatar-lg { margin: 0 auto 14px; }
+.freelancer-card h3 { font-size: 1rem; margin-bottom: 2px; }
+.freelancer-card .uni { font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; }
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.skill-tags span {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--blue-light);
+  color: var(--navy);
+}
+[data-theme="dark"] .skill-tags span { color: #9DB8FF; }
+
+.freelancer-card .stats {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.freelancer-card .stats strong { color: var(--text); }
+
+/* --- How it works --- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.step {
+  padding-top: 20px;
+  border-top: 2px solid var(--navy);
+}
+
+.step .num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--blue);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.step h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.step p { font-size: 0.92rem; }
+
+/* --- CTA band --- */
+.cta-band {
+  background: var(--navy);
+  border-radius: var(--r-lg);
+  padding: 64px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(61,111,224,0.35), transparent 55%);
+}
+
+.cta-band > * { position: relative; }
+
+.cta-band h2 {
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  max-width: 20ch;
+  margin: 0 auto 28px;
+}
+
+.cta-band .btn-group {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE — tiered from large desktop down to small phones
+   ========================================================================== */
+
+/* Large desktop → laptop: tighten 4-col grids before anything stacks */
+@media (max-width: 1280px) {
+  .category-grid, .service-grid, .freelancer-grid { gap: 14px; }
+}
+
+/* Laptop / large tablet: 4 → 3 columns, hero still side-by-side */
+@media (max-width: 1180px) {
+  .category-grid, .service-grid, .freelancer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Tablet: hero stacks, all grids → 2 columns */
+@media (max-width: 980px) {
+  .hero { padding: 56px 0 72px; }
+  .hero .container { grid-template-columns: 1fr; }
+  .hero-board { min-height: 320px; margin-top: 32px; }
+  .category-grid, .service-grid, .freelancer-grid, .steps { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Small tablet: shrink pin-cards so 3 tilted cards fit without overlap */
+@media (max-width: 760px) {
+  .pin-card { width: clamp(150px, 34vw, 200px); padding: 12px; }
+  .pin-card .title { font-size: 0.78rem; }
+  .pin-card .price { font-size: 0.82rem; }
+  .cta-band { padding: 48px 32px; }
+}
+
+/* Phones */
+@media (max-width: 560px) {
+  .hero { padding: 40px 0 56px; }
+  .hero-board { min-height: 280px; }
+  .pin-card { width: clamp(130px, 42vw, 170px); padding: 10px; }
+  .pin-card.p1 { top: 8%; left: 6%; }
+  .pin-card.p2 { top: 34%; right: 4%; }
+  .pin-card.p3 { bottom: 6%; left: 14%; }
+
+  .category-grid, .service-grid, .freelancer-grid, .steps { grid-template-columns: 1fr; }
+  .cta-band { padding: 40px 24px; }
+  .cta-band .btn-group { flex-direction: column; }
+  .section-head { flex-direction: column; align-items: flex-start; }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+  .hero-copy .searchbar { flex-direction: column; align-items: stretch; padding: 10px; }
+  .hero-copy .searchbar button { width: 100%; }
+  .pin-card { width: clamp(110px, 46vw, 150px); }
+  .category-card, .freelancer-card { padding: 20px 16px; }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order #SF-1042 — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html" class="active"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search orders..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header" style="display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <a href="orders.html" style="font-size:0.85rem; color:var(--muted);">← Back to Orders</a>
+          <h1 style="margin-top:6px;">Logo & Brand Identity — #SF-1042</h1>
+          <p>Client: Amaka Nwosu · Due Sep 4, 2026</p>
+        </div>
+        <span class="badge badge-warning">In Progress</span>
+      </div>
+
+      <div class="order-workspace">
+
+        <!-- LEFT: order info -->
+        <div class="panel">
+          <div class="ow-section">
+            <h3>Order Info</h3>
+            <div class="ow-kv"><span class="k">Service</span><span class="v">Logo & Brand Identity</span></div>
+            <div class="ow-kv"><span class="k">Package</span><span class="v">Standard</span></div>
+            <div class="ow-kv"><span class="k">Price</span><span class="v">₦15,000</span></div>
+            <div class="ow-kv"><span class="k">Revisions left</span><span class="v">2</span></div>
+            <div class="ow-kv"><span class="k">Deadline</span><span class="v">Sep 4, 2026</span></div>
+          </div>
+
+          <div class="ow-section">
+            <h3>Requirements</h3>
+            <p style="font-size:0.88rem; color:var(--text);">Need a modern logo for a skincare brand called "Zenith." Prefer a minimal wordmark with a small icon. Brand colors: sage green and cream.</p>
+          </div>
+
+          <div class="ow-section">
+            <h3>Files</h3>
+            <div class="file-chip">📎 brand-brief.pdf</div>
+            <div class="file-chip">📎 moodboard.zip</div>
+          </div>
+
+          <button class="btn btn-primary btn-block">Mark as Delivered</button>
+        </div>
+
+        <!-- CENTER: chat -->
+        <div class="panel chat-col">
+          <div class="chat-head">
+            <span class="avatar">AN</span>
+            <div>
+              <div style="font-weight:600; font-size:0.92rem;">Amaka Nwosu</div>
+              <div style="font-size:0.78rem; color:var(--success);">● Online</div>
+            </div>
+          </div>
+
+          <div class="chat-body">
+            <div>
+              <div class="msg in">Hi! Just checking in on the logo — how's it coming along?</div>
+              <div class="msg-time">10:12 AM</div>
+            </div>
+            <div style="align-self:flex-end; text-align:right;">
+              <div class="msg out">Going well! First concepts are ready, sending them over now.</div>
+              <div class="msg-time">10:20 AM</div>
+            </div>
+            <div>
+              <div class="msg in">Can we add one more revision round after I see these?</div>
+              <div class="msg-time">10:22 AM</div>
+            </div>
+            <div style="align-self:flex-end; text-align:right;">
+              <div class="msg out">Of course, you've got 2 revisions included in your package.</div>
+              <div class="msg-time">10:24 AM</div>
+            </div>
+          </div>
+
+          <div class="chat-input-row">
+            <button class="icon-btn" style="width:34px; height:34px; border:none; background:none;">📎</button>
+            <input type="text" placeholder="Type a message...">
+            <button class="icon-btn" style="width:34px; height:34px; border:none; background:none;">😊</button>
+            <button class="btn btn-primary btn-sm">Send</button>
+          </div>
+        </div>
+
+        <!-- RIGHT: progress -->
+        <div class="panel">
+          <div class="ow-section" style="margin-bottom:0;">
+            <h3>Order Progress</h3>
+            <div class="progress-track">
+              <div class="progress-step done">
+                <div class="t">Order placed</div>
+                <div class="s">Aug 29, 2026</div>
+              </div>
+              <div class="progress-step done">
+                <div class="t">Requirements confirmed</div>
+                <div class="s">Aug 29, 2026</div>
+              </div>
+              <div class="progress-step current">
+                <div class="t">In progress</div>
+                <div class="s">Freelancer is working on it</div>
+              </div>
+              <div class="progress-step">
+                <div class="t">Delivered</div>
+                <div class="s">Awaiting delivery</div>
+              </div>
+              <div class="progress-step">
+                <div class="t">Completed</div>
+                <div class="s">Awaiting client approval</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+
+
+<script src="../js/utils.js"></script>
+<script>
+
+  // ------------------------------------------------------------
+  // Chat (same pattern as messages.html — local only, no persistence)
+  // ------------------------------------------------------------
+  const chatBody = document.querySelector('.chat-col .chat-body');
+  const chatInput = document.querySelector('.chat-input-row input');
+  const sendBtn = document.querySelector('.chat-input-row .btn-primary');
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    const now = new Date();
+    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const wrapper = document.createElement('div');
+    wrapper.style.alignSelf = 'flex-end';
+    wrapper.style.textAlign = 'right';
+    wrapper.innerHTML = `
+      <div class="msg out">${escapeHtml(text)}</div>
+      <div class="msg-time">${escapeHtml(time)}</div>
+    `;
+
+    chatBody.appendChild(wrapper);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    chatInput.value = '';
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // ------------------------------------------------------------
+  // Mark as Delivered
+  // ------------------------------------------------------------
+  const deliverBtn = document.querySelector('.order-workspace .btn-primary.btn-block');
+  const statusBadge = document.querySelector('.dash-header .badge');
+  const progressSteps = document.querySelectorAll('.progress-step');
+
+  function markAsDelivered() {
+    // Move "Delivered" step to current, mark "In progress" as done
+    progressSteps.forEach(step => {
+      const label = step.querySelector('.t').textContent.trim();
+
+      if (label === 'In progress') {
+        step.classList.remove('current');
+        step.classList.add('done');
+        step.querySelector('.s').textContent = 'Completed by freelancer';
+      }
+
+      if (label === 'Delivered') {
+        step.classList.add('current');
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        step.querySelector('.s').textContent = `Delivered ${dateStr}`;
+      }
+    });
+
+    // Update top badge
+    if (statusBadge) {
+      statusBadge.textContent = 'Delivered';
+      statusBadge.classList.remove('badge-warning');
+      statusBadge.classList.add('badge-success');
+    }
+
+    deliverBtn.textContent = 'Delivered ✓';
+    deliverBtn.disabled = true;
+  }
+
+  if (deliverBtn) {
+    deliverBtn.addEventListener('click', () => {
+      const confirmed = confirm('Mark this order as delivered? The client will be notified.');
+      if (confirmed) markAsDelivered();
+    });
+  }
+
+</script>
+</body>
+</html>

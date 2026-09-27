@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<style>
+  .notif-row { display:flex; gap:14px; padding:16px 18px; border-bottom:1px solid var(--border); position:relative; }
+  .notif-row:last-child { border-bottom:none; }
+  .notif-row.unread { background: var(--blue-light); }
+  .notif-icon { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.05rem; }
+  .notif-icon.order { background:var(--blue-light); color:var(--blue); }
+  .notif-icon.message { background:var(--success-bg); color:var(--success); }
+  .notif-icon.review { background:var(--warning-bg); color:var(--warning); }
+  .notif-icon.payment { background:var(--success-bg); color:var(--success); }
+  .notif-icon.approved { background:var(--blue-light); color:var(--blue); }
+  [data-theme="dark"] .notif-icon.order,
+  [data-theme="dark"] .notif-icon.approved { color:#9DB8FF; }
+  .notif-body { flex:1; }
+  .notif-body .t { font-size:0.9rem; font-weight:600; margin-bottom:2px; }
+  .notif-body .s { font-size:0.83rem; color:var(--muted); }
+  .notif-time { font-size:0.75rem; color:var(--muted); white-space:nowrap; }
+  .notif-dot { width:8px; height:8px; border-radius:50%; background:var(--blue); position:absolute; left:6px; top:22px; }
+</style>
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html" class="active"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header" style="display:flex; align-items:center; justify-content:space-between;">
+        <h1>Notifications</h1>
+        <button class="btn btn-ghost btn-sm">Mark all as read</button>
+      </div>
+
+      <div class="panel" style="padding:0; overflow:hidden;">
+
+        <div class="notif-row unread">
+          <div class="notif-dot"></div>
+          <div class="notif-icon order">▤</div>
+          <div class="notif-body">
+            <div class="t">New order received</div>
+            <div class="s">Bright Consult Ltd ordered "Portfolio Website Build"</div>
+          </div>
+          <span class="notif-time">10 min ago</span>
+        </div>
+
+        <div class="notif-row unread">
+          <div class="notif-dot"></div>
+          <div class="notif-icon message">✉</div>
+          <div class="notif-body">
+            <div class="t">New message</div>
+            <div class="s">Amaka Nwosu: "Can we add one more revision round?"</div>
+          </div>
+          <span class="notif-time">1 hour ago</span>
+        </div>
+
+        <div class="notif-row">
+          <div class="notif-icon payment">₦</div>
+          <div class="notif-body">
+            <div class="t">Payment received</div>
+            <div class="s">₦15,000 was added to your wallet</div>
+          </div>
+          <span class="notif-time">Yesterday</span>
+        </div>
+
+        <div class="notif-row">
+          <div class="notif-icon review">★</div>
+          <div class="notif-body">
+            <div class="t">New review received</div>
+            <div class="s">Bright Consult Ltd left a 5-star review</div>
+          </div>
+          <span class="notif-time">Yesterday</span>
+        </div>
+
+        <div class="notif-row">
+          <div class="notif-icon order">✓</div>
+          <div class="notif-body">
+            <div class="t">Order completed</div>
+            <div class="s">"Wedding Highlight Reel" was marked complete by Chika Eze</div>
+          </div>
+          <span class="notif-time">2 days ago</span>
+        </div>
+
+        <div class="notif-row">
+          <div class="notif-icon approved">✎</div>
+          <div class="notif-body">
+            <div class="t">Service approved</div>
+            <div class="s">Your service "Podcast Audio Editing" is now live on the marketplace</div>
+          </div>
+          <span class="notif-time">4 days ago</span>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+
+
+
+<script src="../js/utils.js"></script>
+<script>
+
+  const markAllBtn = document.querySelector('.dash-header .btn-ghost');
+  const notifRows = document.querySelectorAll('.notif-row');
+  const bellDot = document.querySelector('.topbar-right .icon-btn .dot');
+
+  // ------------------------------------------------------------
+  // Update the bell icon's unread dot based on current state
+  // ------------------------------------------------------------
+  function updateBellIndicator() {
+    const hasUnread = document.querySelectorAll('.notif-row.unread').length > 0;
+    if (bellDot) bellDot.style.display = hasUnread ? 'block' : 'none';
+  }
+
+  // ------------------------------------------------------------
+  // Mark a single notification row as read
+  // ------------------------------------------------------------
+  function markAsRead(row) {
+    if (!row.classList.contains('unread')) return;
+
+    row.classList.remove('unread');
+    const dot = row.querySelector('.notif-dot');
+    if (dot) dot.remove();
+
+    updateBellIndicator();
+  }
+
+  // ------------------------------------------------------------
+  // Click a notification row -> mark it read
+  // (In a real app this might also navigate to the relevant
+  // order/message/review — left as a TODO since that depends
+  // on your data model.)
+  // ------------------------------------------------------------
+  notifRows.forEach(row => {
+    row.addEventListener('click', () => markAsRead(row));
+    row.style.cursor = 'pointer';
+  });
+
+  // ------------------------------------------------------------
+  // Mark all as read
+  // ------------------------------------------------------------
+  if (markAllBtn) {
+    markAllBtn.addEventListener('click', () => {
+      notifRows.forEach(row => markAsRead(row));
+    });
+  }
+
+  // ------------------------------------------------------------
+  // Initial state
+  // ------------------------------------------------------------
+  updateBellIndicator();
+
+</script>
+</body>
+</html>

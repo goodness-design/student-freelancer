@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wallet — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html" class="active"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header" style="display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <h1>Wallet</h1>
+          <p>Track your balance and manage withdrawals.</p>
+        </div>
+        <button class="btn btn-primary">Withdraw Funds</button>
+      </div>
+
+      <div class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-card">
+          <div class="label">Available Balance</div>
+          <div class="value">₦120,500</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Pending</div>
+          <div class="value">₦45,000</div>
+          <span class="delta" style="color:var(--muted);">Clears in 2–5 days</span>
+        </div>
+        <div class="stat-card">
+          <div class="label">Total Earnings</div>
+          <div class="value">₦560,000</div>
+          <span class="delta up">↑ 12% this month</span>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Earnings this year</h2>
+          </div>
+          <div class="bar-chart">
+            <div class="col"><div class="bar" style="height:30%;"></div><span>Mar</span></div>
+            <div class="col"><div class="bar" style="height:45%;"></div><span>Apr</span></div>
+            <div class="col"><div class="bar" style="height:38%;"></div><span>May</span></div>
+            <div class="col"><div class="bar" style="height:62%;"></div><span>Jun</span></div>
+            <div class="col"><div class="bar" style="height:50%;"></div><span>Jul</span></div>
+            <div class="col"><div class="bar highlight" style="height:100%;"></div><span>Aug</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h2>Withdrawal method</h2></div>
+          <div class="ow-kv"><span class="k">Bank</span><span class="v">GTBank</span></div>
+          <div class="ow-kv"><span class="k">Account</span><span class="v">•••• 4821</span></div>
+          <div class="ow-kv"><span class="k">Name</span><span class="v">Philip Osaretin</span></div>
+          <button class="btn btn-ghost btn-block" style="margin-top:16px;">Change Method</button>
+        </div>
+      </div>
+
+      <div class="panel" style="padding:0; overflow:hidden; margin-top:22px;">
+        <div class="panel-head" style="padding:20px 20px 0;">
+          <h2>Transaction history</h2>
+        </div>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Description</th><th>Type</th><th>Date</th><th>Status</th><th style="text-align:right;">Amount</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="cell-main">Payment — Logo & Brand Identity</div></td>
+              <td>Order payment</td>
+              <td>Sep 1, 2026</td>
+              <td><span class="badge badge-success">Completed</span></td>
+              <td style="text-align:right; color:var(--success); font-weight:700;">+ ₦15,000</td>
+            </tr>
+            <tr>
+              <td><div class="cell-main">Withdrawal to GTBank</div></td>
+              <td>Withdrawal</td>
+              <td>Aug 28, 2026</td>
+              <td><span class="badge badge-success">Completed</span></td>
+              <td style="text-align:right; font-weight:700;">– ₦80,000</td>
+            </tr>
+            <tr>
+              <td><div class="cell-main">Payment — Portfolio Website Build</div></td>
+              <td>Order payment</td>
+              <td>Aug 26, 2026</td>
+              <td><span class="badge badge-warning">Pending</span></td>
+              <td style="text-align:right; color:var(--success); font-weight:700;">+ ₦45,000</td>
+            </tr>
+            <tr>
+              <td><div class="cell-main">Payment — Instagram Content Calendar</div></td>
+              <td>Order payment</td>
+              <td>Aug 26, 2026</td>
+              <td><span class="badge badge-success">Completed</span></td>
+              <td style="text-align:right; color:var(--success); font-weight:700;">+ ₦12,000</td>
+            </tr>
+            <tr>
+              <td><div class="cell-main">Refund — Podcast Audio Cleanup</div></td>
+              <td>Refund</td>
+              <td>Aug 20, 2026</td>
+              <td><span class="badge badge-danger">Cancelled</span></td>
+              <td style="text-align:right; font-weight:700;">– ₦10,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+<script src="../js/utils.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+  import {
+    getFirestore, doc, getDoc, collection, query, orderBy, limit, getDocs
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDphujpz9k5XYeVyUJpswTVK5U8V1TpNhU",
+    authDomain: "freelancer-7e8b2.firebaseapp.com",
+    projectId: "freelancer-7e8b2",
+    storageBucket: "freelancer-7e8b2.firebasestorage.app",
+    messagingSenderId: "672375011806",
+    appId: "1:672375011806:web:17544f4ca6adf3dc9c054f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  function getInitials(name) {
+    if (!name) return "?";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+      ? parts[0].slice(0, 2).toUpperCase()
+      : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+
+  function formatNaira(amount) {
+    return "₦" + Number(amount || 0).toLocaleString("en-NG");
+  }
+
+  const statEls = document.querySelectorAll(".stat-card .value");
+  const withdrawBtn = document.querySelector(".dash-header .btn-primary");
+  const txTableBody = document.querySelector(".dash-table tbody");
+  const bankRow = document.querySelectorAll(".ow-kv .v");
+
+  let currentUser = null;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.replace("../login.html");
+      return;
+    }
+    currentUser = user;
+
+    // Avatar initials
+    let fullName = user.displayName || "";
+    try {
+      const userSnap = await getDoc(doc(db, "users", user.uid));
+      if (userSnap.exists()) fullName = userSnap.data().fullName || fullName;
+    } catch (err) {
+      console.error("Could not load user:", err);
+    }
+    document.querySelectorAll(".topbar-profile .avatar").forEach(el => {
+      el.textContent = getInitials(fullName);
+    });
+
+    await loadWallet(user.uid);
+    await loadTransactions(user.uid);
+  });
+
+  // --- READ-ONLY wallet data ---
+  // Assumes a "wallets/{uid}" document, written by a trusted backend
+  // (Cloud Function) whenever a payment, withdrawal, or refund happens —
+  // never written directly by this page.
+  async function loadWallet(uid) {
+    try {
+      const snap = await getDoc(doc(db, "wallets", uid));
+      const w = snap.exists() ? snap.data() : {};
+
+      statEls[0].textContent = formatNaira(w.availableBalance);
+      statEls[1].textContent = formatNaira(w.pendingBalance);
+      statEls[2].textContent = formatNaira(w.totalEarnings);
+
+      if (w.bankName) bankRow[0].textContent = w.bankName;
+      if (w.accountLast4) bankRow[1].textContent = "•••• " + w.accountLast4;
+      if (w.accountName) bankRow[2].textContent = w.accountName;
+    } catch (err) {
+      console.error("Could not load wallet:", err);
+    }
+  }
+
+  // --- READ-ONLY transaction history ---
+  // Assumes "wallets/{uid}/transactions" subcollection, each doc written
+  // by the backend when a real transaction occurs.
+  async function loadTransactions(uid) {
+    try {
+      const q = query(
+        collection(db, "wallets", uid, "transactions"),
+        orderBy("date", "desc"),
+        limit(10)
+      );
+      const snap = await getDocs(q);
+
+      if (snap.empty) return; // keep the placeholder rows if nothing real exists yet
+
+      txTableBody.innerHTML = "";
+      snap.forEach(docSnap => {
+        const t = docSnap.data();
+        const isCredit = t.direction === "credit";
+        const sign = isCredit ? "+ " : "– ";
+        const color = isCredit ? "var(--success)" : "inherit";
+        const badgeClass = t.status === "Completed" ? "badge-success"
+          : t.status === "Pending" ? "badge-warning" : "badge-danger";
+
+        txTableBody.insertAdjacentHTML("beforeend", `
+          <tr>
+            <td><div class="cell-main">${t.description || ""}</div></td>
+            <td>${t.type || ""}</td>
+            <td>${t.date || ""}</td>
+            <td><span class="badge ${badgeClass}">${t.status || ""}</span></td>
+            <td style="text-align:right; color:${color}; font-weight:700;">${sign}${formatNaira(t.amount)}</td>
+          </tr>
+        `);
+      });
+    } catch (err) {
+      console.error("Could not load transactions:", err);
+    }
+  }
+
+  // --- Withdraw Funds ---
+  // This does NOT move money directly. It should call a Cloud Function
+  // that verifies the balance server-side and initiates the payout
+  // through your payment processor (e.g. Paystack/Flutterwave transfer API).
+  withdrawBtn.addEventListener("click", () => {
+    const amount = prompt("Enter amount to withdraw (₦):");
+    if (!amount) return;
+
+    // TODO: replace with a callable Cloud Function, e.g.:
+    //
+    // import { getFunctions, httpsCallable } from "firebase/functions";
+    // const functions = getFunctions(app);
+    // const requestWithdrawal = httpsCallable(functions, "requestWithdrawal");
+    // const result = await requestWithdrawal({ amount: Number(amount) });
+    //
+    // The function verifies availableBalance server-side, deducts it
+    // atomically, and calls your payment processor to send the money.
+
+    alert("Withdrawal requests aren't connected to a payment backend yet. This needs a Cloud Function to process safely — see the code comments.");
+  });
+</script>
+</body>
+</html>

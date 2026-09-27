@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orders — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html" class="active"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search orders..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header">
+        <h1>Orders</h1>
+        <p>Track every order from request to delivery.</p>
+      </div>
+
+      <div class="tabs">
+        <a href="#" class="active" data-tab="all">All (0)</a>
+        <a href="#" data-tab="pending">Pending (0)</a>
+        <a href="#" data-tab="active">Active (0)</a>
+        <a href="#" data-tab="delivered">Delivered (0)</a>
+        <a href="#" data-tab="completed">Completed (0)</a>
+        <a href="#" data-tab="cancelled">Cancelled (0)</a>
+      </div>
+
+      <div class="panel" style="padding:0; overflow:hidden;">
+        <table class="dash-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Client</th>
+              <th>Price</th>
+              <th>Deadline</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-status="active">
+              <td><div class="cell-main">Logo & Brand Identity</div></td>
+              <td>Amaka Nwosu</td>
+              <td>₦15,000</td>
+              <td>Sep 4, 2026</td>
+              <td><span class="badge badge-warning">In Progress</span></td>
+              <td><a href="order-details.html" class="btn btn-ghost btn-sm">Open</a></td>
+            </tr>
+            <tr data-status="pending">
+              <td><div class="cell-main">Portfolio Website Build</div></td>
+              <td>Bright Consult Ltd</td>
+              <td>₦45,000</td>
+              <td>Sep 7, 2026</td>
+              <td><span class="badge badge-neutral">Pending</span></td>
+              <td><a href="order-details.html" class="btn btn-ghost btn-sm">Open</a></td>
+            </tr>
+            <tr data-status="delivered">
+              <td><div class="cell-main">Wedding Highlight Reel</div></td>
+              <td>Chika Eze</td>
+              <td>₦20,000</td>
+              <td>Delivered Sep 1</td>
+              <td><span class="badge badge-success">Delivered</span></td>
+              <td><a href="order-details.html" class="btn btn-ghost btn-sm">Open</a></td>
+            </tr>
+            <tr data-status="completed">
+              <td><div class="cell-main">Instagram Content Calendar</div></td>
+              <td>Zenith Skincare</td>
+              <td>₦12,000</td>
+              <td>Completed Aug 26</td>
+              <td><span class="badge badge-success">Completed</span></td>
+              <td><a href="order-details.html" class="btn btn-ghost btn-sm">Open</a></td>
+            </tr>
+            <tr data-status="cancelled">
+              <td><div class="cell-main">Podcast Audio Cleanup</div></td>
+              <td>Segun Balogun</td>
+              <td>₦10,000</td>
+              <td>Cancelled Aug 20</td>
+              <td><span class="badge badge-danger">Cancelled</span></td>
+              <td><a href="order-details.html" class="btn btn-ghost btn-sm">Open</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+<script>
+
+  const tabs = document.querySelectorAll('.tabs a');
+  const rows = document.querySelectorAll('.dash-table tbody tr');
+
+  function updateTabCounts() {
+    const counts = { all: 0, pending: 0, active: 0, delivered: 0, completed: 0, cancelled: 0 };
+
+    rows.forEach(row => {
+      const status = row.dataset.status;
+      counts.all++;
+      if (counts[status] !== undefined) counts[status]++;
+    });
+
+    tabs.forEach(tab => {
+      const key = tab.dataset.tab;
+      const label = key.charAt(0).toUpperCase() + key.slice(1);
+      tab.textContent = `${label} (${counts[key]})`;
+    });
+  }
+
+  function filterRows(targetStatus) {
+    rows.forEach(row => {
+      const show = targetStatus === 'all' || row.dataset.status === targetStatus;
+      row.style.display = show ? '' : 'none';
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      filterRows(tab.dataset.tab);
+    });
+  });
+
+  // Initial state
+  updateTabCounts();
+  filterRows('all');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<style>
+  /* Real classes replacing the old inline grid overrides, so the
+     responsive rules below actually take effect (inline style="" was
+     beating dashboard.css's media queries before). */
+
+  .profile-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 22px;
+    align-items: start;
+  }
+
+  .profile-identity {
+    text-align: center;
+  }
+
+  .profile-right {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .portfolio-grid .service-card .thumb {
+    overflow: hidden;
+  }
+  .portfolio-grid .service-card .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .edit-field-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .edit-field-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font: inherit;
+    background: var(--card);
+    color: var(--text);
+  }
+  .edit-field-row label {
+    flex-shrink: 0;
+    width: 96px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+  }
+
+  .portfolio-edit-item { margin-bottom: 10px; }
+  .portfolio-edit-item input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font: inherit;
+    background: var(--card);
+    color: var(--text);
+  }
+  .portfolio-edit-item label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  /* ===================== Responsive ===================== */
+
+  @media (max-width: 1100px) {
+    .profile-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 900px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .profile-header-row { align-items: flex-start; }
+    .profile-header-row .btn { width: 100%; }
+    .edit-field-row { flex-direction: column; gap: 4px; }
+    .edit-field-row label { width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html" class="active"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header profile-header-row">
+        <h1>Profile</h1>
+        <button class="btn btn-primary" id="edit-btn">Edit Profile</button>
+      </div>
+
+      <div class="profile-grid">
+
+        <!-- Left: identity card -->
+        <div class="panel profile-identity">
+          <div class="avatar avatar-lg" style="margin:0 auto 16px;">PO</div>
+          <h2 style="font-size:1.2rem; margin-bottom:2px;">Philip Osaretin</h2>
+          <div style="color:var(--muted); font-size:0.9rem; margin-bottom:14px;">University of Benin</div>
+
+          <!-- Computed from real orders/reviews — deliberately NOT editable -->
+          <div class="rating" style="justify-content:center; margin-bottom:16px;"><span class="star">★</span> 4.9 · 42 jobs completed</div>
+
+          <div class="skill-tags" id="skill-tags" style="margin-bottom:0;">
+            <span>Web Development</span><span>React</span><span>Node.js</span>
+          </div>
+        </div>
+
+        <!-- Right: details -->
+        <div class="profile-right">
+
+          <div class="panel">
+            <div class="panel-head"><h2>Bio</h2></div>
+            <p style="color:var(--text);">Third-year Computer Science student at University of Benin. I build clean, responsive websites and web apps for small businesses and startups. Fast turnaround, clear communication, and I genuinely enjoy the work.</p>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><h2>Portfolio</h2></div>
+            <div class="portfolio-grid" id="portfolio-grid">
+              <div class="service-card"><div class="thumb"></div></div>
+              <div class="service-card"><div class="thumb"></div></div>
+              <div class="service-card"><div class="thumb"></div></div>
+            </div>
+          </div>
+
+          <!-- Other people's content about this user — never self-editable -->
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Reviews</h2>
+              <a href="reviews.html">View all</a>
+            </div>
+            <div class="row-list">
+              <div class="list-row">
+                <span class="avatar">AN</span>
+                <div class="info">
+                  <div class="t">Amaka Nwosu <span style="color:var(--warning);">★★★★★</span></div>
+                  <div class="s">"Delivered ahead of schedule, exactly what I needed."</div>
+                </div>
+              </div>
+              <div class="list-row">
+                <span class="avatar">BC</span>
+                <div class="info">
+                  <div class="t">Bright Consult Ltd <span style="color:var(--warning);">★★★★★</span></div>
+                  <div class="s">"Great communication throughout the project."</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><h2>Social links</h2></div>
+            <div class="ow-kv"><span class="k">Portfolio site</span><span class="v" id="social-portfolio">philipo.dev</span></div>
+            <div class="ow-kv"><span class="k">LinkedIn</span><span class="v" id="social-linkedin">/in/philip-osaretin</span></div>
+            <div class="ow-kv"><span class="k">GitHub</span><span class="v" id="social-github">@philipo</span></div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDphujpz9k5XYeVyUJpswTVK5U8V1TpNhU",
+    authDomain: "freelancer-7e8b2.firebaseapp.com",
+    projectId: "freelancer-7e8b2",
+    storageBucket: "freelancer-7e8b2.firebasestorage.app",
+    messagingSenderId: "672375011806",
+    appId: "1:672375011806:web:17544f4ca6adf3dc9c054f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  function getInitials(name) {
+    if (!name) return "?";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+      ? parts[0].slice(0, 2).toUpperCase()
+      : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str ?? "";
+    return div.innerHTML;
+  }
+
+  // --- Elements ---
+  const nameEl = document.querySelector(".profile-identity h2");
+  const uniEl = nameEl.nextElementSibling;
+  const bioEl = document.querySelector(".profile-right .panel p");
+  const skillTagsEl = document.getElementById("skill-tags");
+  const portfolioGridEl = document.getElementById("portfolio-grid");
+  const socialPortfolioEl = document.getElementById("social-portfolio");
+  const socialLinkedinEl = document.getElementById("social-linkedin");
+  const socialGithubEl = document.getElementById("social-github");
+  const avatarEls = document.querySelectorAll(".avatar-lg, .topbar-profile .avatar");
+  const editBtn = document.getElementById("edit-btn");
+
+  let currentUser = null;
+  let currentData = {};
+  let editing = false;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.replace("../login.html");
+      return;
+    }
+    currentUser = user;
+
+    try {
+      const snap = await getDoc(doc(db, "users", user.uid));
+      currentData = snap.exists() ? snap.data() : {};
+    } catch (err) {
+      console.error("Could not load profile:", err);
+      currentData = {};
+    }
+
+    renderView();
+  });
+
+  function getSkillsArray() {
+    return Array.isArray(currentData.skills) && currentData.skills.length
+      ? currentData.skills
+      : ["Web Development", "React", "Node.js"]; // fallback defaults
+  }
+
+  function getPortfolioArray() {
+    const p = Array.isArray(currentData.portfolio) ? currentData.portfolio : [];
+    // always show exactly 3 slots, empty string = no image set yet
+    return [p[0] || "", p[1] || "", p[2] || ""];
+  }
+
+  function renderView() {
+    const fullName = currentData.fullName || currentUser.displayName || "Unnamed User";
+    const university = currentData.university || "University not set";
+    const bio = currentData.bio || "No bio added yet.";
+    const initials = getInitials(fullName);
+    const social = currentData.socialLinks || {};
+
+    nameEl.textContent = fullName;
+    uniEl.textContent = university;
+    bioEl.textContent = bio;
+    avatarEls.forEach(el => el.textContent = initials);
+
+    // Skills
+    skillTagsEl.innerHTML = getSkillsArray()
+      .map(s => `<span>${escapeHtml(s)}</span>`)
+      .join("");
+
+    // Portfolio — image if set, otherwise the gradient placeholder
+    portfolioGridEl.innerHTML = getPortfolioArray()
+      .map(url => `
+        <div class="service-card">
+          <div class="thumb">${url ? `<img src="${escapeHtml(url)}" alt="Portfolio piece">` : ""}</div>
+        </div>
+      `).join("");
+
+    // Social links
+    socialPortfolioEl.textContent = social.portfolioSite || "Not set";
+    socialLinkedinEl.textContent = social.linkedin || "Not set";
+    socialGithubEl.textContent = social.github || "Not set";
+  }
+
+  // --- Edit mode ---
+  editBtn.addEventListener("click", () => {
+    if (!editing) enterEditMode();
+  });
+
+  function enterEditMode() {
+    editing = true;
+
+    const fullName = currentData.fullName || currentUser.displayName || "";
+    const university = currentData.university || "";
+    const bio = currentData.bio || "";
+    const skills = getSkillsArray().join(", ");
+    const portfolio = getPortfolioArray();
+    const social = currentData.socialLinks || {};
+
+    nameEl.innerHTML = `<input type="text" id="edit-name" value="${escapeHtml(fullName)}" style="width:100%; text-align:center; font: inherit; padding:6px; border:1px solid var(--border); border-radius:6px;">`;
+    uniEl.innerHTML = `<input type="text" id="edit-uni" value="${escapeHtml(university)}" style="width:100%; text-align:center; font: inherit; padding:6px; border:1px solid var(--border); border-radius:6px; margin-top:4px;">`;
+    bioEl.outerHTML = `<textarea id="edit-bio" rows="4" style="width:100%; font: inherit; padding:8px; border:1px solid var(--border); border-radius:6px;">${escapeHtml(bio)}</textarea>`;
+
+    skillTagsEl.innerHTML = `<input type="text" id="edit-skills" value="${escapeHtml(skills)}" placeholder="Comma-separated, e.g. Web Development, React, Node.js" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:8px; font: inherit; background:var(--card); color:var(--text);">`;
+
+    portfolioGridEl.innerHTML = portfolio.map((url, i) => `
+      <div class="portfolio-edit-item">
+        <label>Portfolio image ${i + 1} URL</label>
+        <input type="text" id="edit-portfolio-${i}" value="${escapeHtml(url)}" placeholder="https://...">
+      </div>
+    `).join("");
+
+    document.querySelector(".panel:has(#social-portfolio) .panel-head").insertAdjacentHTML("afterend", ""); // no-op guard for older browsers without :has (kept harmless)
+    const socialPanel = socialPortfolioEl.closest(".panel");
+    const kvRows = socialPanel.querySelectorAll(".ow-kv");
+    kvRows[0].innerHTML = `<span class="k">Portfolio site</span><span class="v" style="flex:1; margin-left:12px;"><input type="text" id="edit-social-portfolio" value="${escapeHtml(social.portfolioSite || "")}" placeholder="yourname.dev" style="width:100%; padding:6px 8px; border:1px solid var(--border); border-radius:6px; font:inherit; text-align:right; background:var(--card); color:var(--text);"></span>`;
+    kvRows[1].innerHTML = `<span class="k">LinkedIn</span><span class="v" style="flex:1; margin-left:12px;"><input type="text" id="edit-social-linkedin" value="${escapeHtml(social.linkedin || "")}" placeholder="/in/yourname" style="width:100%; padding:6px 8px; border:1px solid var(--border); border-radius:6px; font:inherit; text-align:right; background:var(--card); color:var(--text);"></span>`;
+    kvRows[2].innerHTML = `<span class="k">GitHub</span><span class="v" style="flex:1; margin-left:12px;"><input type="text" id="edit-social-github" value="${escapeHtml(social.github || "")}" placeholder="@yourname" style="width:100%; padding:6px 8px; border:1px solid var(--border); border-radius:6px; font:inherit; text-align:right; background:var(--card); color:var(--text);"></span>`;
+
+    editBtn.textContent = "Save";
+    editBtn.onclick = saveEdits;
+
+    if (!document.getElementById("cancel-edit-btn")) {
+      const cancelBtn = document.createElement("button");
+      cancelBtn.id = "cancel-edit-btn";
+      cancelBtn.className = "btn btn-ghost";
+      cancelBtn.textContent = "Cancel";
+      cancelBtn.onclick = () => { editing = false; renderView(); resetEditButton(); };
+      editBtn.parentNode.appendChild(cancelBtn);
+    }
+  }
+
+  async function saveEdits() {
+    const newName = document.getElementById("edit-name").value.trim();
+    const newUni = document.getElementById("edit-uni").value.trim();
+    const newBio = document.getElementById("edit-bio").value.trim();
+    const newSkills = document.getElementById("edit-skills").value
+      .split(",").map(s => s.trim()).filter(Boolean);
+    const newPortfolio = [0, 1, 2].map(i => document.getElementById(`edit-portfolio-${i}`).value.trim());
+    const newSocial = {
+      portfolioSite: document.getElementById("edit-social-portfolio").value.trim(),
+      linkedin: document.getElementById("edit-social-linkedin").value.trim(),
+      github: document.getElementById("edit-social-github").value.trim()
+    };
+
+    editBtn.disabled = true;
+    editBtn.textContent = "Saving…";
+
+    try {
+      await setDoc(doc(db, "users", currentUser.uid), {
+        fullName: newName,
+        university: newUni,
+        bio: newBio,
+        skills: newSkills,
+        portfolio: newPortfolio,
+        socialLinks: newSocial,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+
+      currentData = {
+        ...currentData,
+        fullName: newName,
+        university: newUni,
+        bio: newBio,
+        skills: newSkills,
+        portfolio: newPortfolio,
+        socialLinks: newSocial
+      };
+
+      editing = false;
+      renderView();
+    } catch (err) {
+      console.error("Could not save profile:", err);
+      alert("Something went wrong saving your profile. Please try again.");
+    } finally {
+      editBtn.disabled = false;
+      resetEditButton();
+    }
+  }
+
+  function resetEditButton() {
+    editBtn.textContent = "Edit Profile";
+    editBtn.onclick = enterEditMode;
+    const cancelBtn = document.getElementById("cancel-edit-btn");
+    if (cancelBtn) cancelBtn.remove();
+  }
+</script>
+</body>
+</html>

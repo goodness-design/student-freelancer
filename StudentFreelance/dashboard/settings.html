@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<style>
+  .settings-row { display:flex; align-items:center; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--border); }
+  .settings-row:last-child { border-bottom:none; }
+  .settings-row .t { font-size:0.92rem; font-weight:600; }
+  .settings-row .s { font-size:0.82rem; color:var(--muted); margin-top:2px; }
+  .switch { position:relative; width:44px; height:24px; }
+  .switch input { opacity:0; width:0; height:0; }
+  .switch .slider { position:absolute; inset:0; background:var(--border); border-radius:999px; cursor:pointer; transition:0.2s; }
+  .switch .slider::before { content:""; position:absolute; width:18px; height:18px; left:3px; top:3px; background:#fff; border-radius:50%; transition:0.2s; }
+  .switch input:checked + .slider { background:var(--blue); }
+  .switch input:checked + .slider::before { transform:translateX(20px); }
+  .theme-pick { display:flex; gap:12px; }
+  .theme-pick label { flex:1; border:1px solid var(--border); border-radius:var(--r-md); padding:16px; text-align:center; cursor:pointer; font-size:0.85rem; font-weight:600; }
+  .theme-pick input { display:none; }
+  .theme-pick label:has(input:checked) { border-color:var(--blue); background:var(--blue-light); }
+</style>
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html" class="active"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header"><h1>Settings</h1></div>
+
+      <div class="form-panel" style="max-width:720px; margin:0;">
+
+        <!-- Account -->
+        <div class="panel" style="margin-bottom:22px;">
+          <div class="panel-head"><h2>Account</h2></div>
+          <div class="field"><label>Full name</label><input type="text" value="Philip Osaretin"></div>
+          <div class="field"><label>Email</label><input type="email" value="philip.osaretin@uniben.edu.ng"></div>
+          <div class="field" style="margin-bottom:0;"><label>University</label><input type="text" value="University of Benin"></div>
+          <button class="btn btn-primary" style="margin-top:8px;">Save Changes</button>
+        </div>
+
+        <!-- Security -->
+        <div class="panel" style="margin-bottom:22px;">
+          <div class="panel-head"><h2>Security</h2></div>
+          <div class="settings-row">
+            <div>
+              <div class="t">Change password</div>
+              <div class="s">Last changed 3 months ago</div>
+            </div>
+            <button class="btn btn-ghost btn-sm">Change</button>
+          </div>
+          <div class="settings-row">
+            <div>
+              <div class="t">Two-factor authentication</div>
+              <div class="s">Add an extra layer of security to your account</div>
+            </div>
+            <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+          </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="panel" style="margin-bottom:22px;">
+          <div class="panel-head"><h2>Notifications</h2></div>
+          <div class="settings-row">
+            <div><div class="t">Email notifications</div><div class="s">Receive a summary by email</div></div>
+            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+          <div class="settings-row">
+            <div><div class="t">Messages</div><div class="s">Notify me about new chat messages</div></div>
+            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+          <div class="settings-row">
+            <div><div class="t">Orders</div><div class="s">Notify me about order updates</div></div>
+            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+          <div class="settings-row">
+            <div><div class="t">Payments</div><div class="s">Notify me when I receive a payment</div></div>
+            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+        </div>
+
+        <!-- Appearance -->
+        <div class="panel">
+          <div class="panel-head"><h2>Appearance</h2></div>
+          <div class="theme-pick">
+            <label><input type="radio" name="theme" id="theme-light">☀ Light Mode</label>
+            <label><input type="radio" name="theme" id="theme-dark">☾ Dark Mode</label>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+<script>
+  // Sync the appearance picker with the actual theme toggle
+  const root = document.documentElement;
+  const lightRadio = document.getElementById('theme-light');
+  const darkRadio = document.getElementById('theme-dark');
+
+  function syncRadios() {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    darkRadio.checked = isDark;
+    lightRadio.checked = !isDark;
+  }
+  syncRadios();
+
+  lightRadio.addEventListener('change', () => {
+    root.removeAttribute('data-theme');
+    localStorage.setItem('sf-theme', 'light');
+  });
+  darkRadio.addEventListener('change', () => {
+    root.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sf-theme', 'dark');
+  });
+</script>
+
+
+
+<script src="../js/utils.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import {
+    getAuth, onAuthStateChanged, updateProfile,
+    updateEmail, sendPasswordResetEmail
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDphujpz9k5XYeVyUJpswTVK5U8V1TpNhU",
+    authDomain: "freelancer-7e8b2.firebaseapp.com",
+    projectId: "freelancer-7e8b2",
+    storageBucket: "freelancer-7e8b2.firebasestorage.app",
+    messagingSenderId: "672375011806",
+    appId: "1:672375011806:web:17544f4ca6adf3dc9c054f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  function getInitials(name) {
+    if (!name) return "?";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+      ? parts[0].slice(0, 2).toUpperCase()
+      : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+
+  // --- Element refs ---
+  const nameInput = document.querySelector('.field input[type="text"]');
+  const emailInput = document.querySelector('.field input[type="email"]');
+  const uniInput = document.querySelectorAll('.field input[type="text"]')[1];
+  const saveAccountBtn = document.querySelector('.panel .btn-primary');
+
+  const changePwBtn = document.querySelector('.settings-row .btn-ghost');
+  const twoFaToggle = document.querySelectorAll('.switch input')[0];
+  const notifToggles = {
+    email: document.querySelectorAll('.switch input')[1],
+    messages: document.querySelectorAll('.switch input')[2],
+    orders: document.querySelectorAll('.switch input')[3],
+    payments: document.querySelectorAll('.switch input')[4]
+  };
+
+  let currentUser = null;
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.replace("../login.html");
+      return;
+    }
+    currentUser = user;
+
+    let data = {};
+    try {
+      const snap = await getDoc(doc(db, "users", user.uid));
+      if (snap.exists()) data = snap.data();
+    } catch (err) {
+      console.error("Could not load settings:", err);
+    }
+
+    // Fill account fields
+    nameInput.value = data.fullName || user.displayName || "";
+    emailInput.value = user.email || "";
+    uniInput.value = data.university || "";
+
+    // Fill notification toggles (default checked if never set)
+    const settings = data.settings || {};
+    notifToggles.email.checked = settings.emailNotifications !== false;
+    notifToggles.messages.checked = settings.messageNotifications !== false;
+    notifToggles.orders.checked = settings.orderNotifications !== false;
+    notifToggles.payments.checked = settings.paymentNotifications !== false;
+    twoFaToggle.checked = settings.twoFactorEnabled === true;
+
+    // Avatar initials in topbar
+    document.querySelectorAll(".topbar-profile .avatar").forEach(el => {
+      el.textContent = getInitials(data.fullName || user.displayName);
+    });
+  });
+
+  // --- Save account changes ---
+  saveAccountBtn.addEventListener("click", async () => {
+    const newName = nameInput.value.trim();
+    const newEmail = emailInput.value.trim();
+    const newUni = uniInput.value.trim();
+
+    saveAccountBtn.disabled = true;
+    saveAccountBtn.textContent = "Saving…";
+
+    try {
+      // Update Firestore profile
+      await setDoc(doc(db, "users", currentUser.uid), {
+        fullName: newName,
+        university: newUni,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+
+      // Update Firebase Auth display name
+      if (newName !== currentUser.displayName) {
+        await updateProfile(currentUser, { displayName: newName });
+      }
+
+      // Update Firebase Auth email (only if changed)
+      if (newEmail !== currentUser.email) {
+        await updateEmail(currentUser, newEmail);
+      }
+
+      alert("Your changes have been saved.");
+    } catch (err) {
+      console.error("Save failed:", err);
+      if (err.code === "auth/requires-recent-login") {
+        alert("For security, please log out and log back in before changing your email.");
+      } else {
+        alert("Something went wrong saving your changes. Please try again.");
+      }
+    } finally {
+      saveAccountBtn.disabled = false;
+      saveAccountBtn.textContent = "Save Changes";
+    }
+  });
+
+  // --- Change password (sends a reset link — no plaintext password handling needed) ---
+  changePwBtn.addEventListener("click", async () => {
+    if (!currentUser.email) return;
+    changePwBtn.disabled = true;
+    changePwBtn.textContent = "Sending…";
+    try {
+      await sendPasswordResetEmail(auth, currentUser.email);
+      alert(`A password reset link has been sent to ${currentUser.email}.`);
+    } catch (err) {
+      console.error("Could not send reset email:", err);
+      alert("Could not send reset email. Please try again.");
+    } finally {
+      changePwBtn.disabled = false;
+      changePwBtn.textContent = "Change";
+    }
+  });
+
+  // --- Toggle switches: save each change immediately ---
+  function wireToggle(el, field) {
+    el.addEventListener("change", async () => {
+      try {
+        await setDoc(doc(db, "users", currentUser.uid), {
+          settings: { [field]: el.checked },
+          updatedAt: serverTimestamp()
+        }, { merge: true });
+      } catch (err) {
+        console.error(`Could not save ${field}:`, err);
+        el.checked = !el.checked; // revert on failure
+      }
+    });
+  }
+
+  wireToggle(notifToggles.email, "emailNotifications");
+  wireToggle(notifToggles.messages, "messageNotifications");
+  wireToggle(notifToggles.orders, "orderNotifications");
+  wireToggle(notifToggles.payments, "paymentNotifications");
+  wireToggle(twoFaToggle, "twoFactorEnabled");
+</script>
+<script>
+
+
+  function syncRadios() {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    darkRadio.checked = isDark;
+    lightRadio.checked = !isDark;
+  }
+  syncRadios();
+
+  lightRadio.addEventListener('change', () => {
+    root.removeAttribute('data-theme');
+    localStorage.setItem('sf-theme', 'light');
+  });
+  darkRadio.addEventListener('change', () => {
+    root.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sf-theme', 'dark');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<style>
+  .rating-summary { display:flex; align-items:center; gap:40px; }
+  .rating-big { text-align:center; }
+  .rating-big .num { font-family:var(--font-display); font-size:2.6rem; font-weight:800; line-height:1; }
+  .rating-big .stars { color:var(--warning); margin:8px 0; }
+  .rating-big .count { font-size:0.82rem; color:var(--muted); }
+  .rating-bars { flex:1; display:flex; flex-direction:column; gap:8px; }
+  .rating-bar-row { display:flex; align-items:center; gap:10px; font-size:0.82rem; color:var(--muted); }
+  .rating-bar-row .track { flex:1; height:8px; border-radius:999px; background:var(--border); overflow:hidden; }
+  .rating-bar-row .fill { height:100%; background:var(--warning); }
+  .review-card { padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .review-card:last-child { border-bottom:none; }
+  .review-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .review-who { display:flex; align-items:center; gap:10px; }
+  .review-service { font-size:0.8rem; color:var(--blue); margin-top:6px; display:inline-block; }
+</style>
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html" class="active"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header"><h1>Reviews</h1></div>
+
+      <div class="panel" style="margin-bottom:22px;">
+        <div class="rating-summary">
+          <div class="rating-big">
+            <div class="num">4.9</div>
+            <div class="stars">★★★★★</div>
+            <div class="count">Based on 42 reviews</div>
+          </div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span>5★</span><div class="track"><div class="fill" style="width:88%;"></div></div><span>37</span></div>
+            <div class="rating-bar-row"><span>4★</span><div class="track"><div class="fill" style="width:9%;"></div></div><span>4</span></div>
+            <div class="rating-bar-row"><span>3★</span><div class="track"><div class="fill" style="width:2%;"></div></div><span>1</span></div>
+            <div class="rating-bar-row"><span>2★</span><div class="track"><div class="fill" style="width:0%;"></div></div><span>0</span></div>
+            <div class="rating-bar-row"><span>1★</span><div class="track"><div class="fill" style="width:0%;"></div></div><span>0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="review-card">
+          <div class="review-top">
+            <div class="review-who"><span class="avatar">AN</span><strong style="font-size:0.9rem;">Amaka Nwosu</strong></div>
+            <span style="font-size:0.8rem; color:var(--muted);">Sep 1, 2026</span>
+          </div>
+          <div style="color:var(--warning); font-size:0.9rem;">★★★★★</div>
+          <p style="color:var(--text); margin-top:8px;">Delivered ahead of schedule and exactly what I asked for. Communication was excellent throughout — will definitely order again.</p>
+          <span class="review-service">Logo & Brand Identity</span>
+        </div>
+
+        <div class="review-card">
+          <div class="review-top">
+            <div class="review-who"><span class="avatar">BC</span><strong style="font-size:0.9rem;">Bright Consult Ltd</strong></div>
+            <span style="font-size:0.8rem; color:var(--muted);">Aug 24, 2026</span>
+          </div>
+          <div style="color:var(--warning); font-size:0.9rem;">★★★★★</div>
+          <p style="color:var(--text); margin-top:8px;">The website turned out clean and loads fast. Took the time to explain the code structure too, which we appreciated.</p>
+          <span class="review-service">Portfolio Website Build</span>
+        </div>
+
+        <div class="review-card">
+          <div class="review-top">
+            <div class="review-who"><span class="avatar">ZS</span><strong style="font-size:0.9rem;">Zenith Skincare</strong></div>
+            <span style="font-size:0.8rem; color:var(--muted);">Aug 20, 2026</span>
+          </div>
+          <div style="color:var(--warning); font-size:0.9rem;">★★★★☆</div>
+          <p style="color:var(--text); margin-top:8px;">Good work overall, needed one extra round of edits on the content calendar but the final result was solid.</p>
+          <span class="review-service">Instagram Content Calendar</span>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+
+
+<script src="../js/utils.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDphujpz9k5XYeVyUJpswTVK5U8V1TpNhU",
+    authDomain: "freelancer-7e8b2.firebaseapp.com",
+    projectId: "freelancer-7e8b2",
+    storageBucket: "freelancer-7e8b2.firebasestorage.app",
+    messagingSenderId: "672375011806",
+    appId: "1:672375011806:web:17544f4ca6adf3dc9c054f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  function getInitials(name) {
+    if (!name) return "?";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+      ? parts[0].slice(0, 2).toUpperCase()
+      : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.replace("../login.html");
+      return;
+    }
+
+    let fullName = user.displayName || "";
+
+    try {
+      const snap = await getDoc(doc(db, "users", user.uid));
+      if (snap.exists()) fullName = snap.data().fullName || fullName;
+    } catch (err) {
+      console.error("Could not load profile:", err);
+    }
+
+    const initials = getInitials(fullName);
+    document.querySelectorAll(".topbar-profile .avatar").forEach(el => {
+      el.textContent = initials;
+    });
+  });
+</script>
+
+
+</body>
+</html>

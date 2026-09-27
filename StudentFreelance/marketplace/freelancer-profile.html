@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chidinma Okafor — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/marketplace.css">
+<style>
+  .fp-header {
+    background: var(--navy);
+    padding: 56px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .fp-header::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(61,111,224,0.35), transparent 50%);
+  }
+  .fp-header .container { position: relative; display: flex; align-items: center; gap: 24px; color: #fff; }
+  .fp-header .avatar-lg { background: #fff; color: var(--navy); }
+  .fp-header h1 { color: #fff; font-size: 1.6rem; margin-bottom: 4px; }
+  .fp-header .uni { color: #C7D0E6; font-size: 0.95rem; margin-bottom: 10px; }
+  .fp-stats-row { display: flex; gap: 24px; margin-top: -44px; position: relative; z-index: 2; }
+  .fp-stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 18px 24px; flex: 1; box-shadow: var(--shadow-md); }
+  .fp-stat-card .n { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; }
+  .fp-stat-card .l { font-size: 0.8rem; color: var(--muted); }
+  .fp-body { padding: 60px 0 80px; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="nav-links">
+      <a href="index.html">Explore</a>
+      <a href="categories.html">Categories</a>
+      <a href="../index.html#how-it-works">How it Works</a>
+      <a href="../signup.html">Become a Freelancer</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+      <a href="../login.html" class="btn btn-ghost btn-sm">Log in</a>
+      <a href="../signup.html" class="btn btn-primary btn-sm">Get Started</a>
+      <button class="nav-burger" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="fp-header">
+  <div class="container">
+    <div class="avatar avatar-lg">CO</div>
+    <div>
+      <h1>Chidinma Okafor</h1>
+      <div class="uni">University of Lagos · Lagos, Nigeria</div>
+      <div style="color:#fff;"><span style="color:var(--warning);">★</span> 4.9 · 63 jobs completed</div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="fp-stats-row">
+    <div class="fp-stat-card"><div class="n">63</div><div class="l">Completed Jobs</div></div>
+    <div class="fp-stat-card"><div class="n">4.9</div><div class="l">Average Rating</div></div>
+    <div class="fp-stat-card"><div class="n">&lt; 1hr</div><div class="l">Response Time</div></div>
+    <div class="fp-stat-card"><div class="n">2 yrs</div><div class="l">On StudentFreelance</div></div>
+  </div>
+</div>
+
+<section class="fp-body">
+  <div class="container" style="display:grid; grid-template-columns: 1fr 2fr; gap:40px;">
+
+    <!-- Sidebar -->
+    <div>
+      <div class="panel" style="margin-bottom:20px;">
+        <div class="panel-head"><h2>About</h2></div>
+        <p style="color:var(--text); font-size:0.9rem;">Graphic design student at UNILAG specializing in branding and visual identity. I've worked with over 60 clients ranging from student organizations to small businesses.</p>
+      </div>
+
+      <div class="panel" style="margin-bottom:20px;">
+        <div class="panel-head"><h2>Skills</h2></div>
+        <div class="skill-tags" style="justify-content:flex-start;">
+          <span>Branding</span><span>Illustration</span><span>Adobe Illustrator</span><span>Figma</span>
+        </div>
+      </div>
+
+      <a href="../dashboard/messages.html" class="btn btn-primary btn-block">Contact Freelancer</a>
+    </div>
+
+    <!-- Main -->
+    <div>
+      <div class="sd-section">
+        <h2>Services (3)</h2>
+        <div class="browse-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <a class="service-card" href="service-details.html">
+            <div class="thumb"></div>
+            <div class="body">
+              <div class="title">I will design a modern logo and brand identity</div>
+              <div class="meta"><span class="rating"><span class="star">★</span> 4.9</span><span class="price">From ₦15,000</span></div>
+            </div>
+          </a>
+          <a class="service-card" href="service-details.html">
+            <div class="thumb"></div>
+            <div class="body">
+              <div class="title">I will illustrate a custom character design</div>
+              <div class="meta"><span class="rating"><span class="star">★</span> 4.8</span><span class="price">From ₦20,000</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="sd-section">
+        <h2>Portfolio</h2>
+        <div class="browse-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="service-card"><div class="thumb"></div></div>
+          <div class="service-card"><div class="thumb"></div></div>
+          <div class="service-card"><div class="thumb"></div></div>
+        </div>
+      </div>
+
+      <div class="sd-section">
+        <h2>Reviews (63)</h2>
+        <div class="panel">
+          <div style="padding-bottom:16px; border-bottom:1px solid var(--border); margin-bottom:16px;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+              <span class="avatar">AN</span><strong style="font-size:0.9rem;">Amaka Nwosu</strong>
+            </div>
+            <div style="color:var(--warning); font-size:0.85rem; margin-bottom:6px;">★★★★★</div>
+            <p style="color:var(--text); font-size:0.9rem;">Exactly what I needed, delivered early. Highly recommend.</p>
+          </div>
+          <div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+              <span class="avatar">ZS</span><strong style="font-size:0.9rem;">Zenith Skincare</strong>
+            </div>
+            <div style="color:var(--warning); font-size:0.85rem; margin-bottom:6px;">★★★★★</div>
+            <p style="color:var(--text); font-size:0.9rem;">Great attention to detail and fast communication throughout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap:32px;">
+      <div>
+        <div class="nav-logo" style="color:#fff; margin-bottom:12px;">
+          <span class="mark" style="background:#fff; color:var(--navy);">SF</span>StudentFreelance
+        </div>
+        <p style="color:#A9B6D6; font-size:0.9rem; max-width:32ch;">A marketplace where university students turn their skills into income.</p>
+      </div>
+      <div>
+        <h4>Marketplace</h4>
+        <a href="index.html">Explore Services</a>
+        <a href="categories.html">Categories</a>
+        <a href="../signup.html">Become a Freelancer</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="../index.html#how-it-works">How it Works</a>
+        <a href="#">Trust & Safety</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 StudentFreelance. All rights reserved.</span>
+      <div class="social-row"><a href="#">𝕏</a><a href="#">◎</a><a href="#">in</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/utils.js"></script>
+</body>
+</html>

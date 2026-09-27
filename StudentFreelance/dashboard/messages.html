@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messages — StudentFreelance</title>
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="dash-shell">
+  <aside class="dash-sidebar">
+    <a href="../index.html" class="nav-logo"><span class="mark">SF</span>StudentFreelance</a>
+    <nav class="dash-nav">
+      <a href="index.html"><span class="ic">▦</span> Dashboard</a>
+      <a href="services.html"><span class="ic">◎</span> Explore</a>
+      <a href="my-services.html"><span class="ic">✎</span> My Services</a>
+      <a href="orders.html"><span class="ic">▤</span> Orders</a>
+      <a href="messages.html" class="active"><span class="ic">✉</span> Messages</a>
+      <a href="wallet.html"><span class="ic">₦</span> Wallet</a>
+      <a href="reviews.html"><span class="ic">★</span> Reviews</a>
+      <a href="notifications.html"><span class="ic">◔</span> Notifications</a>
+      <div class="dash-nav-divider"></div>
+      <a href="profile.html"><span class="ic">◉</span> Profile</a>
+      <a href="settings.html"><span class="ic">⚙</span> Settings</a>
+    </nav>
+    <a href="../login.html" class="logout"><span class="ic">⎋</span> Logout</a>
+  </aside>
+
+  <div>
+    <header class="dash-topbar">
+      <button class="sidebar-toggle nav-burger" style="display:flex;" aria-label="Toggle menu">☰</button>
+      <form class="searchbar" role="search"><input type="text" placeholder="Search..."></form>
+      <div class="topbar-right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+        <button class="icon-btn" aria-label="Notifications">✉<span class="dot"></span></button>
+        <a href="profile.html" class="topbar-profile"><span class="avatar">PO</span></a>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <div class="dash-header">
+        <h1>Messages</h1>
+      </div>
+
+      <div class="inbox-shell">
+        <!-- Conversation list -->
+        <div class="conv-list">
+          <div class="searchbar"><input type="text" placeholder="Search conversations..."></div>
+
+          <div class="conv-item active">
+            <div class="avatar">AN<span class="online-dot"></span></div>
+            <div class="info">
+              <div class="top-row"><span class="name">Amaka Nwosu</span><span class="time">10:24 AM</span></div>
+              <div class="preview">Of course, you've got 2 revisions included</div>
+            </div>
+          </div>
+
+          <div class="conv-item">
+            <div class="avatar">BC</div>
+            <div class="info">
+              <div class="top-row"><span class="name">Bright Consult Ltd</span><span class="time">Yesterday</span></div>
+              <div class="preview">Sent the brand guidelines doc</div>
+            </div>
+            <span class="unread-badge">2</span>
+          </div>
+
+          <div class="conv-item">
+            <div class="avatar">CE<span class="online-dot"></span></div>
+            <div class="info">
+              <div class="top-row"><span class="name">Chika Eze</span><span class="time">Yesterday</span></div>
+              <div class="preview">This looks amazing, thank you!</div>
+            </div>
+          </div>
+
+          <div class="conv-item">
+            <div class="avatar">ZS</div>
+            <div class="info">
+              <div class="top-row"><span class="name">Zenith Skincare</span><span class="time">Aug 26</span></div>
+              <div class="preview">Perfect, approving the order now</div>
+            </div>
+          </div>
+
+          <div class="conv-item">
+            <div class="avatar">SB</div>
+            <div class="info">
+              <div class="top-row"><span class="name">Segun Balogun</span><span class="time">Aug 20</span></div>
+              <div class="preview">I'd like to cancel this order</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active chat -->
+        <div class="inbox-chat">
+          <div class="chat-head">
+            <span class="avatar">AN</span>
+            <div>
+              <div style="font-weight:600; font-size:0.92rem;">Amaka Nwosu</div>
+              <div style="font-size:0.78rem; color:var(--success);">● Online</div>
+            </div>
+          </div>
+
+          <div class="chat-body">
+            <div>
+              <div class="msg in">Hi! Just checking in on the logo — how's it coming along?</div>
+              <div class="msg-time">10:12 AM</div>
+            </div>
+            <div style="align-self:flex-end; text-align:right;">
+              <div class="msg out">Going well! First concepts are ready, sending them over now.</div>
+              <div class="msg-time">10:20 AM</div>
+            </div>
+            <div>
+              <div class="msg in">Can we add one more revision round after I see these?</div>
+              <div class="msg-time">10:22 AM</div>
+            </div>
+            <div style="align-self:flex-end; text-align:right;">
+              <div class="msg out">Of course, you've got 2 revisions included in your package.</div>
+              <div class="msg-time">10:24 AM</div>
+            </div>
+          </div>
+
+          <div class="chat-input-row">
+            <button class="icon-btn" style="width:34px; height:34px; border:none; background:none;">📎</button>
+            <input type="text" placeholder="Type a message...">
+            <button class="icon-btn" style="width:34px; height:34px; border:none; background:none;">😊</button>
+            <button class="btn btn-primary btn-sm">Send</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+
+
+<script src="../js/utils.js"></script>
+<script>
+
+  // ------------------------------------------------------------
+  // Local conversation data
+  // In a real app this would come from Firestore/your backend,
+  // keyed by conversation id, not hardcoded like this.
+  // ------------------------------------------------------------
+  const conversations = {
+    'amaka': {
+      name: 'Amaka Nwosu',
+      initials: 'AN',
+      online: true,
+      messages: [
+        { text: "Hi! Just checking in on the logo — how's it coming along?", out: false, time: '10:12 AM' },
+        { text: 'Going well! First concepts are ready, sending them over now.', out: true, time: '10:20 AM' },
+        { text: 'Can we add one more revision round after I see these?', out: false, time: '10:22 AM' },
+        { text: "Of course, you've got 2 revisions included in your package.", out: true, time: '10:24 AM' }
+      ]
+    },
+    'bright': {
+      name: 'Bright Consult Ltd',
+      initials: 'BC',
+      online: false,
+      messages: [
+        { text: 'Sent the brand guidelines doc', out: false, time: 'Yesterday' }
+      ]
+    },
+    'chika': {
+      name: 'Chika Eze',
+      initials: 'CE',
+      online: true,
+      messages: [
+        { text: 'This looks amazing, thank you!', out: false, time: 'Yesterday' }
+      ]
+    },
+    'zenith': {
+      name: 'Zenith Skincare',
+      initials: 'ZS',
+      online: false,
+      messages: [
+        { text: 'Perfect, approving the order now', out: false, time: 'Aug 26' }
+      ]
+    },
+    'segun': {
+      name: 'Segun Balogun',
+      initials: 'SB',
+      online: false,
+      messages: [
+        { text: "I'd like to cancel this order", out: false, time: 'Aug 20' }
+      ]
+    }
+  };
+
+  let activeConvId = 'amaka';
+
+  const convListEl = document.querySelector('.conv-list');
+  const convItems = document.querySelectorAll('.conv-item');
+  const chatHead = document.querySelector('.chat-head');
+  const chatBody = document.querySelector('.chat-body');
+  const chatInput = document.querySelector('.chat-input-row input');
+  const sendBtn = document.querySelector('.chat-input-row .btn-primary');
+
+  // Map each .conv-item in the DOM to a conversation id, in order.
+  // (Matches the order conversations{} keys were defined above.)
+  const convOrder = ['amaka', 'bright', 'chika', 'zenith', 'segun'];
+
+  // ------------------------------------------------------------
+  // Render the active conversation into the chat pane
+  // ------------------------------------------------------------
+  function renderChat(convId) {
+    const conv = conversations[convId];
+    if (!conv) return;
+
+    chatHead.innerHTML = `
+      <span class="avatar">${conv.initials}</span>
+      <div>
+        <div style="font-weight:600; font-size:0.92rem;">${escapeHtml(conv.name)}</div>
+        <div style="font-size:0.78rem; color:${conv.online ? 'var(--success)' : 'var(--muted)'};">
+          ${conv.online ? '● Online' : 'Offline'}
+        </div>
+      </div>
+    `;
+
+    chatBody.innerHTML = conv.messages.map(m => `
+      <div${m.out ? ' style="align-self:flex-end; text-align:right;"' : ''}>
+        <div class="msg ${m.out ? 'out' : 'in'}">${escapeHtml(m.text)}</div>
+        <div class="msg-time">${escapeHtml(m.time)}</div>
+      </div>
+    `).join('');
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ------------------------------------------------------------
+  // Switch conversations on click
+  // ------------------------------------------------------------
+  convItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      const convId = convOrder[index];
+      if (!convId) return;
+
+      activeConvId = convId;
+
+      convItems.forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+
+      // Clear unread badge, if any, when opened
+      const badge = item.querySelector('.unread-badge');
+      if (badge) badge.remove();
+
+      renderChat(activeConvId);
+    });
+  });
+
+  // ------------------------------------------------------------
+  // Send a message
+  // ------------------------------------------------------------
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    const now = new Date();
+    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    conversations[activeConvId].messages.push({ text, out: true, time });
+
+    // Update the conversation list preview + timestamp
+    const activeIndex = convOrder.indexOf(activeConvId);
+    const listItem = convItems[activeIndex];
+    if (listItem) {
+      listItem.querySelector('.preview').textContent = text;
+      listItem.querySelector('.time').textContent = time;
+    }
+
+    chatInput.value = '';
+    renderChat(activeConvId);
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // ------------------------------------------------------------
+  // Initial render
+  // ------------------------------------------------------------
+  renderChat(activeConvId);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+/* ==========================================================================
+   StudentFreelance — Authentication Pages
+   ========================================================================== */
+
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.auth-visual {
+  background: var(--navy);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 48px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.auth-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(61,111,224,0.4), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(61,111,224,0.28), transparent 50%);
+}
+
+.auth-visual > * { position: relative; }
+
+.auth-visual .nav-logo { color: #fff; }
+.auth-visual .nav-logo .mark { background: #fff; color: var(--navy); }
+
+.auth-quote {
+  max-width: 34ch;
+}
+
+.auth-quote h2 {
+  color: #fff;
+  font-size: 1.7rem;
+  margin-bottom: 16px;
+}
+
+.auth-quote p {
+  color: #C7D0E6;
+  font-size: 0.98rem;
+}
+
+.auth-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-stack .pin-card {
+  position: static;
+  transform: none;
+  width: 260px;
+}
+
+.auth-stack .pin-card.p1,
+.auth-stack .pin-card.p2,
+.auth-stack .pin-card.p3 {
+  transform: none;
+}
+
+.auth-form-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.auth-form-wrap {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-form-wrap .nav-logo {
+  display: none;
+}
+
+.auth-form-wrap h1 {
+  font-size: 1.7rem;
+  margin-bottom: 8px;
+}
+
+.auth-form-wrap > p {
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--card);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.btn-social:hover { border-color: var(--navy); }
+
+.field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  margin-top: -8px;
+  margin-bottom: 22px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.auth-switch a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.form-success {
+  text-align: center;
+}
+
+.form-success .icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--success-bg);
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin: 0 auto 20px;
+}
+
+@media (max-width: 900px) {
+  .auth-shell { grid-template-columns: 1fr; }
+  .auth-visual { display: none; }
+  .auth-form-wrap .nav-logo { display: flex; margin-bottom: 32px; }
+}
