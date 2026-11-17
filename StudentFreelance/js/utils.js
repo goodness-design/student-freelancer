@@ -44,3 +44,13 @@
     el.textContent = isDark ? '☀' : '☾';
   }
 })();
+
+const filterBtn = document.querySelector('.filter-toggle');
+const filterPanel = document.querySelector('.filter-panel');
+
+if (filterBtn && filterPanel) {
+  filterBtn.addEventListener('click', () => {
+    const open = filterPanel.classList.toggle('open');
+    filterBtn.setAttribute('aria-expanded', open);
+  });
+}

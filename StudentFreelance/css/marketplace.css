@@ -7,15 +7,19 @@
   border-bottom: 1px solid var(--border);
 }
 
-.browse-header h1 { font-size: 1.6rem; margin-bottom: 16px; }
+.browse-header h1 { 
+  font-size: 1.6rem; 
+  margin-bottom: 16px; 
+}
 
 .chip-row {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  padding-bottom: 4px;
 }
 .chip-row::-webkit-scrollbar { display: none; }
 
@@ -30,17 +34,30 @@
   flex-shrink: 0;
 }
 
-.chip.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.chip.active { 
+  background: var(--navy); 
+  border-color: var(--navy); 
+  color: #fff; 
+}
+/* --- Layout & Grids --- */
+.browse-body { padding: 32px 0 80px; }
 
-.browse-body {
-  padding: 32px 0 80px;
+.browse-body .container { max-width: 1360px; } /* extra room so 4 columns aren't cramped */
+
+.browse-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 260px minmax(0, 1fr);
   gap: 32px;
   align-items: start;
 }
 
-/* --- Filter panel --- */
+.browse-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* --- Filter Panel --- */
 .filter-panel {
   border: 1px solid var(--border);
   border-radius: var(--r-md);
@@ -49,6 +66,7 @@
   top: calc(var(--nav-h) + 20px);
   max-height: calc(100vh - var(--nav-h) - 40px);
   overflow-y: auto;
+  background: var(--card);
 }
 
 .filter-group { margin-bottom: 26px; }
@@ -69,7 +87,11 @@
   cursor: pointer;
 }
 
-.filter-option input { flex-shrink: 0; width: 16px; height: 16px; }
+.filter-option input { 
+  flex-shrink: 0; 
+  width: 16px; 
+  height: 16px; 
+}
 
 .price-inputs {
   display: flex;
@@ -88,7 +110,9 @@
   font-size: 0.85rem;
 }
 
-/* --- Results header --- */
+.filter-toggle { display: none; }
+
+/* --- Results Header --- */
 .results-head {
   display: flex;
   align-items: center;
@@ -110,8 +134,7 @@
   max-width: 100%;
 }
 
-/* --- Service card images --- */
-/* Fills the thumb box for cards using a real <img> instead of the gradient placeholder */
+/* --- Service Card Images --- */
 .thumb img,
 .service-card .thumb img {
   width: 100%;
@@ -120,12 +143,14 @@
   display: block;
 }
 
-.browse-grid {
+
+.service-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
 }
 
+/* --- Pagination --- */
 .pagination {
   display: flex;
   flex-wrap: wrap;
@@ -147,9 +172,13 @@
   flex-shrink: 0;
 }
 
-.pagination a.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.pagination a.active { 
+  background: var(--navy); 
+  border-color: var(--navy); 
+  color: #fff; 
+}
 
-/* --- Service details --- */
+/* --- Service Details --- */
 .sd-layout {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -164,7 +193,12 @@
   margin-bottom: 12px;
   overflow: hidden;
 }
-.sd-gallery-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sd-gallery-main img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block; 
+}
 
 .sd-gallery-thumbs {
   display: grid;
@@ -180,13 +214,18 @@
   cursor: pointer;
   overflow: hidden;
 }
-.sd-gallery-thumbs div:first-child { opacity: 1; border: 2px solid var(--blue); }
-.sd-gallery-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.sd-title-block {
-  margin: 28px 0;
+.sd-gallery-thumbs div:first-child { 
+  opacity: 1; 
+  border: 2px solid var(--blue); 
+}
+.sd-gallery-thumbs img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block; 
 }
 
+.sd-title-block { margin: 28px 0; }
 .sd-title-block h1 {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   margin-bottom: 14px;
@@ -209,13 +248,14 @@
 .req-list .item { display: flex; gap: 10px; font-size: 0.92rem; color: var(--text); }
 .req-list .item .n { color: var(--blue); font-weight: 700; flex-shrink: 0; }
 
-/* --- Package box --- */
+/* --- Package Box --- */
 .package-box {
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   position: sticky;
   top: calc(var(--nav-h) + 20px);
   overflow: hidden;
+  background: var(--card);
 }
 
 .package-tabs {
@@ -233,16 +273,19 @@
   color: var(--muted);
   border-bottom: 2px solid transparent;
   min-width: 0;
+  cursor: pointer;
 }
 
 .package-tabs button.active {
   color: var(--navy);
   border-color: var(--navy);
 }
-[data-theme="dark"] .package-tabs button.active { color: #9DB8FF; border-color: #9DB8FF; }
+[data-theme="dark"] .package-tabs button.active { 
+  color: #9DB8FF; 
+  border-color: #9DB8FF; 
+}
 
 .package-content { padding: 22px; }
-
 .package-content .p-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
 .package-content .p-desc { font-size: 0.88rem; margin-bottom: 18px; }
 .package-content .p-price { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; margin-bottom: 18px; }
@@ -258,49 +301,143 @@
 }
 .package-content .p-meta span { display: flex; align-items: center; gap: 8px; }
 
-/* --- Related services --- */
+/* --- Related Services & Footer Grids --- */
 .related-head { margin: 60px 0 24px; font-size: 1.2rem; }
 
-
-/* ==========================================================================
-   RESPONSIVE — tiered from large desktop down to small phones
-   ========================================================================== */
-
-/* Large desktop → laptop: tighten the grid before anything stacks */
-@media (max-width: 1240px) {
-  .browse-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 32px;
 }
 
-/* Small laptop / large tablet: drop to 2-column grid, sidebar filter still fits */
+
+
+
+/* 3 columns */
+@media (max-width: 1280px) {
+  .browse-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+}
+
 @media (max-width: 1100px) {
-  .browse-grid { grid-template-columns: repeat(2, 1fr); }
   .filter-panel { padding: 18px; }
 }
 
-/* Tablet: filters move above results, gallery/package stack on service-details */
+/* Sidebar collapses into a toggle */
+@media (max-width: 1024px) {
+  .browse-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+
+  .filter-toggle { display: inline-flex; width: 100%; justify-content: center; }
+
+  .filter-panel { display: none; position: static; max-height: none; }
+  .filter-panel.open { display: block; }
+
+  .sd-layout { grid-template-columns: 1fr; }
+  .package-box { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* 2 columns */
+@media (max-width: 820px) {
+  .browse-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+  .results-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .results-head select { width: 100%; }
+
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; }
+  .nav-burger { display: inline-block; }
+}
+
+/* 1 column */
+@media (max-width: 560px) {
+  .browse-grid { grid-template-columns: 1fr; }
+  .browse-header { padding: 28px 0 20px; }
+  .browse-body { padding: 24px 0 56px; }
+  .browse-layout { gap: 16px; }
+  .filter-group { margin-bottom: 20px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .sd-gallery-thumbs { grid-template-columns: repeat(3, 1fr); }
+  .sd-title-block { margin: 20px 0; }
+  .sd-section { margin-bottom: 24px; }
+  .related-head { margin: 40px 0 18px; font-size: 1.05rem; }
+}
+
+@media (max-width: 400px) {
+  .chip { padding: 7px 13px; font-size: 0.8rem; }
+  .pagination a { width: 34px; height: 34px; font-size: 0.8rem; }
+  .package-tabs button { font-size: 0.78rem; padding: 12px 4px; }
+  .package-content { padding: 16px; }
+  .sd-gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE QUERIES (Tiered from large desktop down to small phones)
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .browse-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+}
+
+@media (max-width: 1100px) {
+  .filter-panel { padding: 18px; }
+}
+
 @media (max-width: 900px) {
-  .browse-body { grid-template-columns: 1fr; }
-  .filter-panel {
+  .browse-body,
+  .browse-layout { 
+    grid-template-columns: 1fr; 
+    gap: 16px; 
+  }
+
+  .filter-toggle { 
+    display: inline-flex; 
+    width: 100%; 
+    justify-content: center; 
+  }
+
+  .filter-panel { 
+    display: none; 
     position: static;
     max-height: none;
   }
-  .browse-grid { grid-template-columns: repeat(3, 1fr); }
+  .filter-panel.open { display: block; }
+
+  .browse-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sd-layout { grid-template-columns: 1fr; }
   .package-box { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* Small tablet / large phone */
 @media (max-width: 768px) {
-  .browse-grid { grid-template-columns: repeat(2, 1fr); }
+  .browse-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sd-gallery-thumbs { grid-template-columns: repeat(4, 1fr); }
-  .results-head { align-items: flex-start; flex-direction: column; }
+  
+  .results-head { 
+    align-items: flex-start; 
+    flex-direction: column; 
+    gap: 8px;
+  }
   .results-head select { width: 100%; }
+
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; }
+  .nav-burger { display: inline-block; }
 }
 
-/* Phones */
+@media (max-width: 600px) {
+  .browse-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
 @media (max-width: 560px) {
   .browse-header { padding: 28px 0 20px; }
-  .browse-body { padding: 24px 0 56px; gap: 24px; }
+  .browse-body,
+  .browse-layout { padding: 24px 0 56px; gap: 24px; }
   .browse-grid { grid-template-columns: 1fr; gap: 16px; }
   .filter-group { margin-bottom: 20px; }
   .sd-gallery-thumbs { grid-template-columns: repeat(3, 1fr); }
@@ -309,7 +446,6 @@
   .related-head { margin: 40px 0 18px; font-size: 1.05rem; }
 }
 
-/* Small phones */
 @media (max-width: 400px) {
   .chip { padding: 7px 13px; font-size: 0.8rem; }
   .pagination a { width: 34px; height: 34px; font-size: 0.8rem; }
